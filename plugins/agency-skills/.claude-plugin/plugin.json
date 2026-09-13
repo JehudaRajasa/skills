@@ -17,7 +17,7 @@
     "./skills/open-change-request",
     "./skills/plan-implementation",
     "./skills/update-plan",
-    "./skills/execute-plan",
+    "./skills/implement-change",
     "./skills/commit",
     "./skills/where-were-we",
     "./skills/help-me-understand"

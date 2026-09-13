@@ -15,7 +15,7 @@ Resolve the user's identity from the tracker's own authenticated account — Git
 
 ## Moving an issue's state
 
-Only `plan-implementation` (work started) and `open-change-request` (code ready for review) move an issue, and only to the state their own action implies.
+`plan-implementation` and `implement-change` mark work started with `states.in_progress`; `open-change-request` marks code ready for review with `states.review`. These are the skills that move issues. If the issue already has the target state, leave it there.
 
 Move the issue only when `.agents/config.yml` maps the state for that action (`states.in_progress`, `states.review`). When the mapping is absent, leave the board untouched.
 

@@ -1,6 +1,6 @@
 # agency-skills
 
-Tracker-agnostic skills for a team Agile workflow: pull a groomed issue, branch, plan, build, and open the change request — on GitLab, GitHub, Jira, or Linear.
+Tracker-agnostic skills for a team Agile workflow: pull a groomed issue, branch, plan when needed, implement, and open the change request — on GitLab, GitHub, Jira, or Linear.
 
 Full docs — philosophy, workflow, and how it compares to mattpocock-skills — live in the [marketplace README](../../README.md#agency-skills).
 

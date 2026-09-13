@@ -5,7 +5,7 @@ argument-hint: "[issue-id]"
 disable-model-invocation: true
 ---
 
-Cut a working branch for one issue and check it out. Git only — `plan-implementation` moves the issue to in-progress when planning starts.
+Cut a working branch for one issue and check it out. Git only — planning or implementation marks work started per [`references/issue-tracker.md`](../../references/issue-tracker.md).
 
 Resolve the tracker per [`references/issue-tracker.md`](../../references/issue-tracker.md).
 

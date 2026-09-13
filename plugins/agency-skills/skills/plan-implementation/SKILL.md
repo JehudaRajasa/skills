@@ -5,7 +5,7 @@ argument-hint: "[issue-id] [context]"
 disable-model-invocation: true
 ---
 
-Turn a pulled issue into a concrete, stepped plan, and save it where the next session can pick it up. Plan only: write no source files until the user confirms or runs `/execute-plan`. The plan and context files are the only files you write here.
+Turn a pulled issue into a concrete, stepped plan, and save it where the next session can pick it up. Plan only: write no source files until the user confirms or runs `/implement-change`. The plan and context files are the only files you write here.
 
 Resolve the tracker per [`references/issue-tracker.md`](../../references/issue-tracker.md).
 
