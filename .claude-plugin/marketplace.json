@@ -1,0 +1,18 @@
+{
+  "name": "jehudarajasa",
+  "owner": {
+    "name": "Jehuda Rajasa",
+    "url": "https://github.com/jehudarajasa"
+  },
+  "description": "Jehuda Rajasa's daily driver skills marketplace.",
+  "allowCrossMarketplaceDependenciesOn": ["mattpocock"],
+  "plugins": [
+    {
+      "name": "agency-skills",
+      "source": "./plugins/agency-skills",
+      "description": "Tracker-agnostic skills for Agile/Waterfall workflow (fetch issues, branch, plan, execute, merge).",
+      "category": "engineering",
+      "keywords": ["engineering", "skills", "agile", "waterfall", "agency", "workflow"]
+    }
+  ]
+}

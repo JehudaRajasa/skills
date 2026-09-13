@@ -1,0 +1,22 @@
+# .agents/config.yml — copy this to your project root and trim to taste.
+# Every field is optional. The skills read `git remote` first and only fall
+# back here for what the environment can't reveal: your team's state names,
+# labels, and branch conventions.
+
+# Which tracker and which project. Omit both when your git remote already
+# names them (GitHub / GitLab). Required for Jira, Linear, or a self-hosted
+# host the remote can't identify.
+tracker: gitlab            # gitlab | github | jira | linear
+project: group/repo        # the tracker's project id or slug
+
+# Used by `fetch-issues`: which issue states count as "workable, not done".
+active_states: [Open, "To Do", Staging, WIP]
+
+# Used by `plan-implementation` and `open-change-request`: the states the
+# workflow moves an issue into.
+states:
+  in_progress: WIP
+  review: "In Review"
+
+# open-change-request: what your tracker calls the review artifact.
+change_request: MR         # MR (GitLab) | PR (GitHub, Bitbucket)

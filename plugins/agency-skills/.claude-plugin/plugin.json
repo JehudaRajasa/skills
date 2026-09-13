@@ -1,0 +1,25 @@
+{
+  "name": "agency-skills",
+  "version": "1.0.0",
+  "description": "Tracker-agnostic skills for Agile/Waterfall workflow (fetch issues, branch, plan, execute, merge) on GitLab, GitHub, Jira, or Linear.",
+  "author": {
+    "name": "Jehuda Rajasa",
+    "email": "jehudarajasa@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": [
+    { "name": "mattpocock-skills", "marketplace": "mattpocock" }
+  ],
+  "skills": [
+    "./skills/setup-agency-skills",
+    "./skills/fetch-issues",
+    "./skills/cut-branch",
+    "./skills/open-change-request",
+    "./skills/plan-implementation",
+    "./skills/update-plan",
+    "./skills/execute-plan",
+    "./skills/commit",
+    "./skills/where-were-we",
+    "./skills/help-me-understand"
+  ]
+}
