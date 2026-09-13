@@ -16,7 +16,7 @@ Resolve the issue from the argument, else the current branch, else the issue und
 
 Read the trail the pipeline leaves, across three places:
 
-- **Plan, when present** — `PLAN.md`'s `Status`, definition of done, and which `Tasks` are checked versus open. `CONTEXT.md` for the decisions behind them.
+- **Plan, when present** — `PLAN.md`'s status, acceptance criteria, and which tasks are checked versus open. `CONTEXT.md` for the decisions behind them.
 - **Git** — the current branch, the commits already on it, and any uncommitted changes (`git status`, `git diff`).
 - **Tracker** — the issue's title, requirements, state, and whether a change request is already open, per [`references/issue-tracker.md`](../../references/issue-tracker.md).
 

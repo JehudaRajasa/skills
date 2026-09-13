@@ -17,17 +17,13 @@ The plan you synthesize. Use these sections:
 
 **Branch:** <branch-name> **Created:** <YYYY-MM-DD> **Status:** Planned
 
-## Definition of Done
+## Acceptance Criteria
 
-<Bullet list of conditions that must be true when shipped.>
+<Observable conditions that must all hold for this issue to be complete.>
 
 ## Design (optional)
 
-<The design decisions the next session would otherwise re-derive: architecture, dependencies, tradeoffs, the approach chosen over alternatives.>
-
-## Risks & Assumptions (optional)
-
-<Numbered list. Each item: the assumption + what breaks if it is wrong.>
+<Include when decisions govern multiple tasks. Record the chosen approach, its rationale, and relevant constraints. Put task-specific details with their task. Omit this section when the tasks convey the approach fully.>
 
 ## Tasks
 
@@ -36,6 +32,8 @@ The plan you synthesize. Use these sections:
 ```
 
 `Status` moves `Planned` → `In Progress` → `Done` as the work proceeds.
+
+Record decisions and remaining caveats beside the affected design or task. As answers arrive, replace resolved assumptions with the resulting decisions or acceptance criteria.
 
 ## CONTEXT.md
 

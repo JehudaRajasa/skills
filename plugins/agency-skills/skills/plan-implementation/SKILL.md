@@ -21,11 +21,12 @@ Viability first: is this worth doing, and doable as framed? If not, surface that
 
 Close the gaps between the issue and a concrete plan. Work these through with the user before writing the plan:
 
-- Definition of done — the outcomes that mark the work complete.
+- Acceptance criteria — the observable outcomes that mark the issue complete.
 - Architecture and its tradeoffs.
 - Libraries and tools — check the library's official docs for current conventions (using Context7 MCP when available) before proposing one.
 - Blast radius — which parts of the codebase change, and what that ripples into.
-- Hidden assumptions, if any.
+
+Resolve uncertainties that could change scope, approach, or correctness using available evidence, then ask the user for remaining decisions. Discussion is complete when each identified uncertainty is resolved or has an explicit verification task before work that depends on it.
 
 ## Save
 

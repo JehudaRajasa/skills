@@ -19,7 +19,7 @@ When the new context leaves a real decision open — not just a detail — grill
 
 ## Re-synthesize
 
-Rebuild `PLAN.md` from the issue plus the grown `CONTEXT.md`, keeping the same sections. Two things hold fixed:
+Rebuild `PLAN.md` from the issue plus the grown `CONTEXT.md`, using the issue workspace template and recording rules. Two things hold fixed:
 
 - **Completed tasks stay done.** A `[x]` task keeps its check unless the new context explicitly undoes it.
 - **Status stays where it was** (`Planned` / `In Progress`), unless the new context moves it.

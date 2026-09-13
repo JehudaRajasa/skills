@@ -15,7 +15,7 @@ Look for an existing workspace per [`references/issue-workspace.md`](../../refer
 
 ## Choose the path
 
-- **Saved plan** → follow its definition of done and open tasks.
+- **Saved plan** → follow its acceptance criteria and open tasks.
 - **No saved plan** → proceed directly when the intended behavior, affected scope, and verification are clear. State those briefly in the conversation; keep this path free of plan and workspace creation.
 
 If investigation reveals an unresolved product or design decision, explain the decision and pause dependent implementation. Point the user to `/plan-implementation`, or `/update-plan` when revising an existing plan. Routine implementation details are yours to resolve.
@@ -33,6 +33,6 @@ Comment like the repo does; where it gives no signal, default to none. Add one o
 
 ## Hand off
 
-Verify the change against the plan's definition of done or the issue's requirements: it runs, and its tests (if any) pass. Report what changed, the verification performed, and any remaining limitations. Leave any plan's Status at `In Progress`, write no commit, and open no MR. The user will then review the diff — by hand and/or via `/code-review` — before running `/commit`.
+Verify the change against the plan's acceptance criteria or the issue's requirements: it runs, and its tests (if any) pass. Report what changed, the verification performed, and any remaining limitations. Leave any plan's Status at `In Progress`, write no commit, and open no MR. The user will then review the diff — by hand and/or via `/code-review` — before running `/commit`.
 
 Done when the requirements are met, every task in an existing plan is checked off, the change is verified, and it sits uncommitted for the user to review.
