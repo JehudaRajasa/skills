@@ -6,7 +6,7 @@ Every skill that touches issues or change requests resolves the tracker the same
 
 Read the environment before opening config:
 
-1. `git remote get-url origin` — a `github.com` host means GitHub (use the `gh` CLI or a GitHub MCP); a GitLab host means GitLab (use a GitLab MCP or `glab`).
+1. `git remote get-url origin` — a `github.com` host means GitHub (use the `gh` CLI or a GitHub MCP); a GitLab host means GitLab (use `glab` or a GitLab MCP).
 2. If the remote does not name the tracker (Jira, Linear, or a self-hosted host you cannot identify) read `tracker` and `project` from `.agents/config.yml` in the project root.
 
 ## Who "the user" is
