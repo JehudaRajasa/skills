@@ -1,0 +1,6 @@
+interface:
+  display_name: "Where Were We"
+  short_description: "Reconstruct progress and name the next step"
+
+policy:
+  allow_implicit_invocation: false

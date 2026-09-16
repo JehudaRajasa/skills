@@ -1,0 +1,6 @@
+interface:
+  display_name: "Fetch Issues"
+  short_description: "List your active assigned issues"
+
+policy:
+  allow_implicit_invocation: false
