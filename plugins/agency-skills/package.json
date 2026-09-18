@@ -1,0 +1,35 @@
+{
+  "name": "@jehudarajasa/agency-skills",
+  "version": "1.0.0",
+  "description": "Tracker-agnostic skills for issue-driven software development workflows.",
+  "keywords": [
+    "opencode-plugin",
+    "opencode",
+    "agent-skills",
+    "software-development"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Jehuda Rajasa",
+    "email": "jehudarajasa@gmail.com"
+  },
+  "homepage": "https://github.com/jehudarajasa/skills",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jehudarajasa/skills.git",
+    "directory": "plugins/agency-skills"
+  },
+  "type": "module",
+  "main": "./index.js",
+  "exports": "./index.js",
+  "files": [
+    "index.js",
+    "skills/",
+    "references/",
+    "config.example.yml",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
