@@ -1,6 +1,6 @@
 {
   "name": "@jehudarajasa/agency-skills",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Tracker-agnostic skills for issue-driven software development workflows.",
   "keywords": [
     "opencode-plugin",
@@ -22,7 +22,14 @@
   "type": "module",
   "main": "./index.js",
   "exports": "./index.js",
+  "bin": {
+    "agency-skills": "./bin/install.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
   "files": [
+    "bin/",
     "index.js",
     "skills/",
     "references/",
