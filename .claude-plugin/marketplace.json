@@ -10,9 +10,19 @@
     {
       "name": "agency-skills",
       "source": "./plugins/agency-skills",
-      "description": "Tracker-agnostic skills for Agile/Waterfall workflow (fetch issues, branch, plan, execute, merge).",
+      "description": "Skills for issue-driven software development, from issue to change request.",
       "category": "engineering",
-      "keywords": ["engineering", "skills", "agile", "waterfall", "agency", "workflow"]
+      "keywords": [
+        "agent-skills",
+        "claude-code",
+        "issue-driven-development",
+        "software-engineering",
+        "tdd",
+        "gitlab",
+        "github",
+        "jira",
+        "linear"
+      ]
     }
   ]
 }

@@ -1,12 +1,19 @@
 {
   "name": "@jehudarajasa/agency-skills",
   "version": "1.1.0",
-  "description": "Tracker-agnostic skills for issue-driven software development workflows.",
+  "description": "Skills for issue-driven software development, from issue to change request.",
   "keywords": [
+    "agent-skills",
+    "claude-code",
     "opencode-plugin",
     "opencode",
-    "agent-skills",
-    "software-development"
+    "issue-driven-development",
+    "software-engineering",
+    "tdd",
+    "gitlab",
+    "github",
+    "jira",
+    "linear"
   ],
   "license": "MIT",
   "author": {

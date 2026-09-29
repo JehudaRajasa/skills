@@ -1,7 +1,18 @@
 {
   "name": "agency-skills",
   "version": "1.0.0",
-  "description": "Tracker-agnostic skills for Agile/Waterfall workflow (fetch issues, branch, plan, execute, merge) on GitLab, GitHub, Jira, or Linear.",
+  "description": "Skills for issue-driven software development, from issue to change request.",
+  "keywords": [
+    "agent-skills",
+    "claude-code",
+    "issue-driven-development",
+    "software-engineering",
+    "tdd",
+    "gitlab",
+    "github",
+    "jira",
+    "linear"
+  ],
   "author": {
     "name": "Jehuda Rajasa",
     "email": "jehudarajasa@gmail.com"
