@@ -5,9 +5,9 @@ argument-hint: "What do you want to understand?"
 disable-model-invocation: true
 ---
 
-Explain how something in this codebase works, to someone who has never worked in it. Comprehension is the deliverable — measured by what the user can restate afterwards, not by how much you covered. Answer in chat; write a file only if they ask for one.
+Explain how something in this codebase works. Comprehension is the deliverable — measured by what the user can restate afterwards, not by how much you covered. Answer in chat; write a file only if they ask for one.
 
-If the argument names an audience (`for a PM`, `for a non-engineer`), take your vocabulary and depth from it. Otherwise, an engineer new to this codebase.
+Match vocabulary and depth to the audience named in the argument (`for a PM`, `for a non-engineer`) or evident from the conversation.
 
 ## Trace first
 
