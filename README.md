@@ -4,7 +4,7 @@
 
 > Coding and execution can be delegated to agents. The agency is still yours.
 
-Jehuda's daily driver Claude Code skills marketplace.
+Jehuda's daily driver Claude Code skills marketplace, shaped by more than five years of engineering experience at agencies.
 
 Agency Skills is built for issue-driven development: pull an issue from any issue tracker (GitLab, GitHub, Jira, or Linear), cut a branch, plan, implement, review, commit, and open a change request.
 
@@ -65,7 +65,7 @@ List your open issues in the project's issue tracker so you can pick one.
 
 Cut a branch named after the issue in `<type>/<issue-id>-<slug>` format.
 
-### 3. [`/plan-implementation`](plugins/agency-skills/skills/plan-implementation/SKILL.md) (Optional)
+### 3. [`/plan-implementation`](plugins/agency-skills/skills/plan-implementation/SKILL.md)
 
 This is the load-bearing skill within the workflow, where you will likely spend most of your time. The generated plan is the agreed contract between you and your agent.
 
@@ -129,7 +129,7 @@ You can also put supporting files, such as PRD docs and CSVs inside the issue wo
 
 ### Why Implementation Stops Before Commit
 
-Matt's `/implement` bundles implementation, code review, and commit. I keep these steps separate because even frontier models still need adjustments or steering after implementation and review, especially for changes with a large blast radius. I need to review the full diff before committing so I can keep my commit history clean.
+Matt Pocock's `/implement` skill bundles implementation, code review, and commit. I keep these steps separate because even frontier models still need adjustments or steering after implementation and review, especially for changes with a large blast radius. I need to review the full diff before committing so I can keep my commit history clean.
 
 ## License
 
