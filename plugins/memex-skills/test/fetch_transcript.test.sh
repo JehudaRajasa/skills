@@ -9,19 +9,19 @@ trap 'rm -rf "$work"' EXIT
 mkdir "$work/bin"
 cat > "$work/bin/yt-dlp" <<'EOF'
 #!/usr/bin/env bash
-# -J prints the canned info; a subtitle download writes the canned json3 and logs the track
-if [[ " $* " == *" -J "* ]]; then cat "$FAKE_INFO"; exit; fi
+# -J logs the URL and prints the canned info; a subtitle download writes the canned captions and logs the track
+if [[ " $* " == *" -J "* ]]; then echo "${@: -1}" > "$FAKE_URL"; cat "$FAKE_INFO"; exit; fi
 while [ $# -gt 0 ]; do
   case "$1" in --sub-langs) track="${2#^}" track="${track%\$}"; shift ;; -o) out="$2"; shift ;; esac
   shift
 done
 echo "$track" > "$FAKE_LOG"
-cp "$FAKE_JSON3" "${out%.%(ext)s}.$track.json3"
+cp "$FAKE_SUB" "${out%.%(ext)s}.$track.${FAKE_SUB##*.}"
 EOF
 chmod +x "$work/bin/yt-dlp"
-export PATH="$work/bin:$PATH" FAKE_INFO="$work/info.json" FAKE_JSON3="$work/sub.json3" FAKE_LOG="$work/track"
+export PATH="$work/bin:$PATH" FAKE_INFO="$work/info.json" FAKE_SUB="$work/sub.json3" FAKE_LOG="$work/track" FAKE_URL="$work/url"
 
-cat > "$FAKE_JSON3" <<'EOF'
+cat > "$FAKE_SUB" <<'EOF'
 {"events": [
   {"tStartMs": 0, "segs": [{"utf8": "hello"}]},
   {"tStartMs": 2000, "segs": [{"utf8": "world"}]},
@@ -47,5 +47,28 @@ info '"language": "en-US", "subtitles": {"ar": [], "en": []}, "automatic_caption
 info '"subtitles": {}, "automatic_captions": {"de-DE-orig": [], "en-orig": []}'
 code=0; "$script" x > /dev/null 2>&1 || code=$?
 [ "$code" = 4 ] || fail "unknown language: exit $code"
+
+# a non-YouTube site: vtt captions (TED pads empty cues with a space and repeats some cues back to back), uploader for channel; a vimeo.com page goes through the embed player
+cat > "$work/sub.vtt" <<'EOF'
+WEBVTT
+
+00:00.000 --> 00:00.001
+ 
+
+1
+00:01.000 --> 00:02.500 align:start
+<v Ken>Tom &amp; Jerry</v>
+two lines
+
+00:00:35.000 --> 00:00:36.000
+<i>later</i>
+00:00:35.000 --> 00:00:36.000
+<i>later</i>
+EOF
+export FAKE_SUB="$work/sub.vtt"
+echo '{"title": "T", "uploader": "U", "webpage_url": "https://vimeo.com/1", "language": "en", "subtitles": {"en": []}}' > "$FAKE_INFO"
+out="$("$script" https://vimeo.com/1)"
+[ "$(cat "$FAKE_URL")" = https://player.vimeo.com/video/1 ] || fail "vimeo url: $(cat "$FAKE_URL")"
+[ "$out" = "$(printf 'T\tU\t\thttps://vimeo.com/1\ten\n[00:01] Tom & Jerry two lines\n[00:35] later')" ] || fail "vtt output: $out"
 
 echo ok

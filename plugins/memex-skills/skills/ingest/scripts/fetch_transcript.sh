@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Usage: fetch_transcript.sh <youtube-url> [language]
+# Usage: fetch_transcript.sh <video-url> [language]
 #   language: the video's spoken language (e.g. ko); only needed after exit 4
 # stdout line 1: title<TAB>channel<TAB>upload_date<TAB>webpage_url<TAB>language (real tabs)
 # stdout rest:   transcript in the language the video is spoken in, one line per 30 seconds,
@@ -9,7 +9,8 @@
 set -euo pipefail
 shopt -s nullglob
 
-url="$1"
+# yt-dlp needs a login for vimeo.com pages, but not for the embed player
+url="$(sed -E 's#^https?://(www\.)?vimeo\.com/([0-9]+)/?([?#].*)?$#https://player.vimeo.com/video/\2#' <<< "$1")"
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 info="$tmp/info.json"
@@ -41,23 +42,37 @@ else
   exit 3
 fi
 
+# YouTube serves json3; most other sites serve only vtt or srt
 yt-dlp -q --load-info-json "$info" --skip-download "$kind" --sub-langs "^$track\$" \
-  --sub-format json3 -o "$tmp/sub.%(ext)s" >&2
-files=("$tmp"/sub.*.json3)
+  --sub-format json3/vtt/srt -o "$tmp/sub.%(ext)s" >&2
+files=("$tmp"/sub.*.{json3,vtt,srt})
 if [ ${#files[@]} -eq 0 ]; then
-  echo "caption track $track listed but not downloaded" >&2
+  echo "caption track $track not downloaded as json3, vtt, or srt" >&2
   exit 3
 fi
+sub="${files[0]}"
 
-jq -r --arg l "$lang" '[.title, .channel, .upload_date, .webpage_url, $l] | @tsv' "$info"
-# join caption events with a space so words at event edges stay apart
-jq -r '
+# vtt/srt as json3 events: one per cue, at its start time; TED repeats some cues with no blank line between
+cues() {
+  jq -Rs '
+    def secs: sub(","; ".") | split(":") | map(tonumber) | reduce .[] as $x (0; . * 60 + $x);
+    def text: gsub("<[^>]*>"; "") | gsub("&lt;"; "<") | gsub("&gt;"; ">") | gsub("&nbsp;"; " ") | gsub("&amp;"; "&") | gsub("^\\s+|\\s+$"; "");
+    {events: [gsub("\r"; "") | splits("\n\\s*\n") | split("\n") as $l
+      | [range($l | length) | select($l[.] | test("-->"))] as $at
+      | range($at | length) as $n
+      | {tStartMs: ($l[$at[$n]] | split(" ")[0] | secs * 1000),
+         segs: [{utf8: ($l[$at[$n] + 1:($at[$n + 1] // ($l | length))] | join(" ") | text)}]}]
+      | unique_by([.tStartMs, .segs])}'
+}
+
+jq -r --arg l "$lang" '[.title, .channel // .uploader, .upload_date, .webpage_url, $l] | @tsv' "$info"
+# drop blank events so each line starts at its first words; join events with a space so words at event edges stay apart
+if [[ $sub == *.json3 ]]; then cat "$sub"; else cues < "$sub"; fi | jq -r '
   def two: tostring | if length < 2 then "0" + . else . end;
-  [.events[]? | select(.segs) | {t: ((.tStartMs // 0) / 1000 | floor), s: ([.segs[].utf8] | join(""))}]
+  [.events[]? | select(.segs) | {t: ((.tStartMs // 0) / 1000 | floor), s: ([.segs[].utf8] | join(""))} | select(.s | test("\\S"))]
   | group_by(.t / 30 | floor)[]
   | .[0].t as $t
   | ([.[].s] | join(" ") | gsub("\\s+"; " ") | ltrimstr(" ") | rtrimstr(" ")) as $text
-  | select($text != "")
   | "[" + (if $t >= 3600 then "\($t / 3600 | floor):" else "" end)
     + "\($t / 60 | floor % 60 | two):\($t % 60 | two)] " + $text
-' "${files[0]}"
+'

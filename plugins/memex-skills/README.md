@@ -29,7 +29,7 @@ claude plugin marketplace add JehudaRajasa/skills
 claude plugin install memex-skills@jehudarajasa
 ```
 
-Ingesting a YouTube video also needs [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) and [`jq`](https://jqlang.org) on your `PATH`.
+Ingesting a video also needs [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) and [`jq`](https://jqlang.org) on your `PATH`. It works on any site yt-dlp supports, as long as the video has captions.
 
 ## Setup
 
@@ -59,7 +59,7 @@ Running a skill from outside the vault? Claude Code may ask before it reads the 
 
 ### 1. [`/ingest`](skills/ingest/SKILL.md)
 
-File a source into the wiki. Give it a URL or a YouTube video: it saves the full text to the raw inbox, talks the takeaways over with you, and writes the summary. Run it with no argument to file every clip you captured but never processed. Either way, it updates every evergreen page the source touches and links the missing ones as [candidates](#why-new-pages-are-your-pick).
+File a source into the wiki. Give it the URL of an article, paper, or video: it saves the full text to the raw inbox, talks the takeaways over with you, and writes the summary. Run it with no argument to file every clip you captured but never processed. Either way, it updates every evergreen page the source touches and links the missing ones as [candidates](#why-new-pages-are-your-pick).
 
 ```
 /memex-skills:ingest https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
