@@ -23,6 +23,21 @@
         "jira",
         "linear"
       ]
+    },
+    {
+      "name": "memex-skills",
+      "source": "./plugins/memex-skills",
+      "description": "Skills for an LLM Wiki, Karpathy's pattern for a knowledge base your agent maintains.",
+      "category": "productivity",
+      "keywords": [
+        "agent-skills",
+        "claude-code",
+        "llm-wiki",
+        "karpathy",
+        "obsidian",
+        "knowledge-base",
+        "second-brain"
+      ]
     }
   ]
 }
