@@ -30,7 +30,7 @@
   "main": "./index.js",
   "exports": "./index.js",
   "bin": {
-    "agency-skills": "./bin/install.js"
+    "agency-skills": "bin/install.js"
   },
   "scripts": {
     "test": "node --test"
