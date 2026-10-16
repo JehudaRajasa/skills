@@ -1,0 +1,6 @@
+interface:
+  display_name: "Ingest"
+  short_description: "File sources and update every existing wiki page they touch"
+
+policy:
+  allow_implicit_invocation: false

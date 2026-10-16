@@ -1,0 +1,6 @@
+interface:
+  display_name: "Lint Wiki"
+  short_description: "Check wiki health, fix safe issues, and create pages you pick"
+
+policy:
+  allow_implicit_invocation: false
