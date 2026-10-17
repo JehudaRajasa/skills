@@ -22,12 +22,48 @@ Karpathy's third layer, the schema, is your vault's `AGENTS.md`. The skills call
 
 ## Installation
 
-In Claude Code, run from your terminal:
+Claude Code, Codex, and OpenCode install Memex Skills as a plugin. Other harnesses install its skills through the [skills CLI](https://github.com/vercel-labs/skills).
+
+<details>
+<summary><big><strong>Claude Code</strong></big></summary>
+
+Run from your terminal:
 
 ```bash
-claude plugin marketplace add JehudaRajasa/skills
-claude plugin install memex-skills@jehudarajasa
+claude plugin install memex-skills --marketplace jehudarajasa/skills
 ```
+
+</details>
+
+<details>
+<summary><big><strong>Codex</strong></big></summary>
+
+```bash
+codex plugin marketplace add jehudarajasa/skills
+codex plugin add memex-skills@jehudarajasa
+```
+
+</details>
+
+<details>
+<summary><big><strong>OpenCode</strong></big></summary>
+
+```bash
+opencode plugin --global @jehudarajasa/memex-skills
+```
+
+</details>
+
+<details>
+<summary><big><strong>Other Harnesses</strong></big></summary>
+
+```bash
+npx skills add https://github.com/jehudarajasa/skills/tree/skills-dist/plugins/memex-skills --global --agent cursor --skill '*'
+```
+
+Replace `cursor` with your agent's name.
+
+</details>
 
 Ingesting a video also needs [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) and [`jq`](https://jqlang.org) on your `PATH`. It works on any site yt-dlp supports, as long as the video has captions.
 

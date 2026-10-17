@@ -1,0 +1,43 @@
+{
+  "name": "@jehudarajasa/memex-skills",
+  "version": "1.1.0",
+  "description": "Skills for an LLM Wiki, Karpathy's pattern for a knowledge base your agent maintains.",
+  "keywords": [
+    "agent-skills",
+    "claude-code",
+    "opencode-plugin",
+    "opencode",
+    "llm-wiki",
+    "karpathy",
+    "obsidian",
+    "knowledge-base",
+    "second-brain"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Jehuda Rajasa",
+    "email": "jehudarajasa@gmail.com"
+  },
+  "homepage": "https://github.com/jehudarajasa/skills",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jehudarajasa/skills.git",
+    "directory": "plugins/memex-skills"
+  },
+  "type": "module",
+  "main": "./index.js",
+  "exports": "./index.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "files": [
+    "index.js",
+    "skills/",
+    "references/",
+    "AGENTS.example.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
