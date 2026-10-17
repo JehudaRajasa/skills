@@ -73,7 +73,7 @@ function installSkillsHost(agent) {
   if (agent === "opencode") {
     execute("opencode", ["plugin", "--global", "@jehudarajasa/agency-skills"]);
   } else {
-    add("jehudarajasa/skills");
+    add("https://github.com/jehudarajasa/skills/tree/skills-dist/plugins/agency-skills");
   }
 }
 
