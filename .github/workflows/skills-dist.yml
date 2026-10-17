@@ -1,0 +1,79 @@
+name: Standalone skill distribution
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "plugins/**"
+      - "scripts/build-skills.mjs"
+      - "test/**"
+      - "package.json"
+      - "LICENSE"
+      - ".claude-plugin/marketplace.json"
+      - ".github/workflows/skills-dist.yml"
+  pull_request:
+    paths:
+      - "plugins/**"
+      - "scripts/build-skills.mjs"
+      - "test/**"
+      - "package.json"
+      - "LICENSE"
+      - ".claude-plugin/marketplace.json"
+      - ".github/workflows/skills-dist.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: skills-dist-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm test
+
+  publish:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm run build
+      - name: Publish distribution branch
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          index_dir=$(mktemp -d)
+          trap 'rm -rf "$index_dir"' EXIT
+          export GIT_INDEX_FILE="$index_dir/index"
+          git read-tree --empty
+          git --work-tree="$PWD/dist" add --all
+          tree=$(git write-tree)
+          parents=()
+          if previous=$(git rev-parse --verify refs/remotes/origin/skills-dist 2>/dev/null); then
+            if [ "$(git rev-parse "$previous^{tree}")" = "$tree" ]; then
+              exit 0
+            fi
+            parents=(-p "$previous")
+          fi
+          commit=$(git commit-tree "$tree" "${parents[@]}" -m "build: distribute skills from $GITHUB_SHA")
+          git push origin "$commit:refs/heads/skills-dist"
