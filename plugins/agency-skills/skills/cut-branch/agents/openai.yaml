@@ -1,0 +1,6 @@
+interface:
+  display_name: "Cut Branch"
+  short_description: "Create an issue-named working branch"
+
+policy:
+  allow_implicit_invocation: false

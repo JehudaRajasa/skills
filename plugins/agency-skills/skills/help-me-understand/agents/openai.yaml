@@ -1,0 +1,6 @@
+interface:
+  display_name: "Help Me Understand"
+  short_description: "Explain how this codebase actually works"
+
+policy:
+  allow_implicit_invocation: false

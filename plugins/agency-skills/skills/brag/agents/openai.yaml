@@ -1,0 +1,6 @@
+interface:
+  display_name: "Brag"
+  short_description: "Record your work in this repo in your brag document"
+
+policy:
+  allow_implicit_invocation: false

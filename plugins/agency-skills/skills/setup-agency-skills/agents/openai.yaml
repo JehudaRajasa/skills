@@ -1,0 +1,6 @@
+interface:
+  display_name: "Setup Agency Skills"
+  short_description: "Configure the tracker and workflow states"
+
+policy:
+  allow_implicit_invocation: false

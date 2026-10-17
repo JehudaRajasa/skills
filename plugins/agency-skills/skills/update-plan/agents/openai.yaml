@@ -1,0 +1,6 @@
+interface:
+  display_name: "Update Plan"
+  short_description: "Re-synthesize a plan from new context"
+
+policy:
+  allow_implicit_invocation: false

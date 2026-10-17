@@ -1,0 +1,6 @@
+interface:
+  display_name: "Open Change Request"
+  short_description: "Open a pull or merge request"
+
+policy:
+  allow_implicit_invocation: false

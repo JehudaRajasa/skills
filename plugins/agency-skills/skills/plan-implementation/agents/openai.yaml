@@ -1,0 +1,6 @@
+interface:
+  display_name: "Plan Implementation"
+  short_description: "Turn an issue into a resumable local plan"
+
+policy:
+  allow_implicit_invocation: false
