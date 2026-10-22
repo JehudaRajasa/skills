@@ -41,7 +41,6 @@ summary: <one line — shown in the index>
 aliases: [] # acronyms & alternate names so [[RAG]] resolves
 created: YYYY-MM-DDTHH:MM:SS±HH:MM
 updated: YYYY-MM-DDTHH:MM:SS±HH:MM
-status: draft | living | stable
 tags: [] # hierarchical domain tags — see Tags below
 source_url: <sources only>
 source_type: article | paper | video # sources only
