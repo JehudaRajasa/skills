@@ -13,12 +13,12 @@ Take the first that resolves:
 
 ## The constitution binds the specifics
 
-The skills speak in **roles**; the constitution binds each role to this vault's concrete paths, frontmatter, and page shape. Read the constitution and translate as you go, using only the paths and field names it defines. The roles a skill may name:
+The skills speak in **roles**; the constitution binds each role to this vault's concrete paths, frontmatter, and page shape. Match roles by purpose, using only the paths and field names the constitution defines. The roles a skill may name:
 
-- **summary layer** — durable one-artifact summaries, self-contained enough to survive link rot.
 - **raw inbox** — immutable full-text captures: the link-rot backstop and the feedstock an ingest sweeps.
+- **source summaries** — one self-contained page per ingested source, preserving its arguments, evidence, and caveats for convenient review.
 - **evergreen pages** — the cross-linked concept and entity pages, the compounding knowledge. New ones are the user's pick: a concept or entity without a page stays an unresolved `[[link]]` — a **candidate** — until the user picks it in `lint-wiki`.
-- **digest layer** — dated temporal syntheses of a window (day/week/month): frozen snapshots, not the compounding evergreen pages.
+- **digests** — dated temporal syntheses of a window (day/week/month): frozen snapshots, not the compounding evergreen pages.
 - **index** and **log** — the map the agent maintains, and the audit trail it appends.
 
 The constitution also owns the **session-close protocol** — what to update and append when an operation ends. Follow it; the skill body carries only its own operation.

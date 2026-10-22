@@ -15,7 +15,7 @@ Take the window from the argument — `day`, `week`, or `month`. Empty → ask w
 
 ## Synthesize
 
-1. Select what falls in the window: read the **log** — the audit trail is the time index — for entries in range, then pull the **summary layer** entries filed and the **evergreen pages** touched over it.
-2. Write one dated synthesis into the **digest layer**, grouped by the vault's domain tags and cross-linked to the pages it covers. Prose that says what the window added up to — the throughline, the connections, what changed your mind — not a list of titles.
+1. Select what falls in the window: read the **log** — the audit trail is the time index — for entries in range, then pull the **source summaries** filed and the **evergreen pages** touched over it.
+2. Write one dated synthesis into **digests**, grouped by the vault's domain tags and cross-linked to the pages it covers. Prose that says what the window added up to — the throughline, the connections, what changed your mind — not a list of titles.
 
 Done when the window's captures and changes are synthesized into one dated digest, every claim linked to the page behind it.

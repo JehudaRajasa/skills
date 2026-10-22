@@ -21,8 +21,8 @@ Start from whichever entry point you were invoked with:
 
 For each raw item:
 
-1. Write a self-contained summary into the **summary layer** — enough that it survives link rot.
+1. Write one page in **source summaries** that preserves the source's arguments, evidence, and caveats.
 2. Fold the source into every **evergreen page** it touches — the concepts it informs and the entities it names, often many. Update every one that exists; link the rest as **candidates**.
 3. Stamp the raw item processed so the next sweep skips it. Never edit the raw beyond the stamp.
 
-Done when every raw item is filed and every page it touches reflects it — updated if it exists, linked as a candidate if not.
+Done when every raw item has a source summary and every page it touches reflects it — updated if it exists, linked as a candidate if not.
