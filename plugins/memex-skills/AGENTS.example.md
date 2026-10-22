@@ -1,5 +1,5 @@
 <!-- Template constitution for memex-skills. Copy it to your vault root as AGENTS.md, then:
-- Rename the folders in Architecture and Roles to yours. Keep each row's bold role: it is the name the skills look for.
+- Rename the folders in Architecture and Roles to yours.
 - Seed the domain tag list with your own subjects, or let it grow as you approve the agent's proposals.
 - For Claude Code, add a CLAUDE.md beside it that contains `@AGENTS.md`.
 - Create an empty index.md and log.md beside it.
@@ -14,7 +14,7 @@ This Obsidian vault is an **LLM Wiki** (Karpathy pattern): the human captures, t
 1. Read `index.md` — the catalog of every page.
 2. Read the last entries of `log.md` — recent activity.
 
-End every operation by updating `index.md` (if pages changed) and appending to `log.md`.
+After changing the vault, update `index.md` (if pages changed) and append to `log.md`.
 
 ## Architecture and Roles
 
@@ -45,7 +45,7 @@ tags: [] # hierarchical domain tags — see Tags below
 source_url: <sources only>
 source_type: article | paper | video # sources only
 author: <sources only — the writer; for a video, the channel>
-published: YYYY-MM-DD # sources only — the source's own date
+published: YYYY-MM-DD # sources only — include the source's publication date when known
 raw: "[[Sources/<slug>]]" # sources only — the full-text capture
 ---
 ```
@@ -104,10 +104,9 @@ Answer from the wiki's pages, cited as `[[links]]`. When an answer has lasting v
 
 ## Conventions
 
-- One concept per page; split a page when it drifts into two.
+- Propose a split for approval when a concept page covers distinct concepts.
 - Titles in Title Case, singular ("Multi-Agent System", not "agents").
 - A filename (`<slug>`) is the page title with each of `\ / : * ? " < > | # [ ] ^` replaced by `-`.
 - Absolute timestamps — ISO 8601 with the local timezone offset (`YYYY-MM-DDTHH:MM:SS±HH:MM`; `date -Iseconds` prints one), never "today".
 - `log.md` entries: one plain paragraph each, `[YYYY-MM-DDTHH:MM:SS±HH:MM] <op> | <summary>` — keep them grep-able (`grep "^\[" log.md`).
 - `index.md` is the catalog _you_ maintain and read first: one line per generated page in `Wiki/`, including summaries and digests, `- [[<page path>]] — <summary>`, under the heading of its first domain tag's top-level tag (`ai/agent` sits under `` ## AI `#ai` ``). One heading per top-level tag in use; within each, evergreen pages first, then source summaries, then digests.
-- Bookkeeping (index, log, cross-links, aliases) is the agent's job.
