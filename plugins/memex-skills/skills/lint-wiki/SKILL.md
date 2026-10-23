@@ -20,20 +20,20 @@ Run every check across the wiki — a full sweep, not a spot-check. Add any the 
 - **Missing cross-references** — pages that should link to each other and don't.
 - **Unlisted tags** — a tag the constitution's tag list leaves out, on a page the constitution says to tag: an agent's slip, or a tag the user added by hand. Report each with the pages that carry it; the user approves it onto the list or has it replaced.
 - **Missing aliases** — an acronym or alternate name used for an existing page but absent from its alias metadata.
-- **Broken links** — unresolved destinations whose intended page exists under another filename or alias.
+- **Broken links** — unresolved links or links to a different role when the intended page exists under another filename, path, or alias.
 - **Data gaps** — a question the wiki raises but never answers, fillable with a web search.
 - **Unprocessed raw sources** — raw sources in the **raw inbox** that the constitution defines as unprocessed. The fix is `/memex-skills:ingest` with no argument, which processes them all.
 
 Then the generative half — where the wiki should grow next:
 
-- **Candidates** — concepts and entities with no page of their own: every unresolved link, and every name that recurs across pages unlinked.
+- **Candidates** — concepts and entities with no **evergreen page** of their own: every unresolved link, every name that recurs across pages unlinked, and mentions whose intended evergreen links resolve to another role.
 - **New questions** worth investigating from what's already here.
 - **New sources** worth hunting down to fill the thin spots.
 
 ## Report and fix
 
-Report every finding. Auto-fix only the safe, mechanical ones — a missing cross-reference, a missing alias, or a broken link with an unambiguous existing target. Repair link destinations as well as alias metadata: target the actual filename and preserve the display text (`[[Page Name|Alias]]`). Leave ambiguous targets and judgment calls — contradictions, stale claims, what to reconcile — for the user to rule on.
+Report every finding. Auto-fix only the safe, mechanical ones — a missing cross-reference, a missing alias, or a broken link with an unambiguous existing target. Repair link destinations as well as alias metadata: target the actual filename, qualify its path when names collide, and preserve the display text (`[[Page Name|Alias]]`). Leave ambiguous targets and judgment calls — contradictions, stale claims, what to reconcile — for the user to rule on.
 
-Report the candidates as a pick list, ranked by how many pages mention each, with those pages as its evidence. Write the ones the user picks from the pages that mention them, and link their unlinked mentions; the rest stay candidates.
+Qualify candidate links whose names collide so they remain unresolved. Report the candidates as a pick list, ranked by how many pages mention each, with those pages as its evidence. Write the ones the user picks as **evergreen pages** from the pages that mention them, and link their mentions to the chosen pages; the rest stay candidates.
 
-Done when every check has run across the wiki, each finding is either fixed or reported, and every candidate the user picked is a page.
+Done when every check has run across the wiki, each finding is either fixed or reported, and every candidate the user picked has an evergreen page with its mentions linked to it.

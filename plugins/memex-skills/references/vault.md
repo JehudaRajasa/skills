@@ -17,9 +17,11 @@ The skills speak in **roles**; the constitution binds each role to this vault's 
 
 - **raw inbox** — holds immutable **raw sources**, the link-rot backstop and the feedstock ingest sweeps.
 - **source summaries** — one self-contained page per ingested source, preserving its arguments, evidence, and caveats for convenient review.
-- **evergreen pages** — the cross-linked concept and entity pages, the compounding knowledge. New ones are the user's pick: a concept or entity without a page stays an unresolved `[[link]]` — a **candidate** — until the user picks it in `lint-wiki`.
+- **evergreen pages** — the cross-linked concept and entity pages, the compounding knowledge. New ones are the user's pick: a concept or entity without a matching evergreen page stays an unresolved `[[link]]` — a **candidate** — until the user picks it in `lint-wiki`, even if a raw source, source summary, digest, or human note has the same name.
 - **digests** — dated temporal syntheses of a window (day/week/month): frozen snapshots, not the compounding evergreen pages.
 - **index** and **log** — the map the agent maintains, and the audit trail it appends.
+
+Resolve links by the intended page's role as well as its name. For name collisions, use the intended page's vault-relative path, including the future evergreen path for candidates, and preserve the display name with `[[path/to/Page|Page]]`.
 
 The constitution also owns the **session-close protocol** — what to update and append when an operation ends. Follow it; the skill body carries only its own operation.
 

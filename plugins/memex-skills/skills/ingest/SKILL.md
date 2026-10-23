@@ -22,7 +22,7 @@ Start from whichever entry point you were invoked with:
 For each raw source:
 
 1. Write one page in **source summaries** that preserves the source's arguments, evidence, and caveats. When reprocessing the same source, update its existing source summary.
-2. Fold the source into every **evergreen page** it touches — the concepts it informs and the entities it names, often many. Update every one that exists; link the rest as **candidates**.
+2. Fold the source into every **evergreen page** it touches — the concepts it informs and the entities it names, often many. Update every matching evergreen page; link the rest as **candidates**, using their intended evergreen paths when names collide.
 3. After steps 1–2 succeed, set or refresh the raw source's processed stamp so the next sweep skips it. Never edit the raw source beyond the stamp.
 
-Done when every raw source has a source summary and every page it touches reflects it — updated if it exists, linked as a candidate if not.
+Done when every raw source has a source summary and every concept or entity it touches has either an updated evergreen page or a candidate link to its intended evergreen path.

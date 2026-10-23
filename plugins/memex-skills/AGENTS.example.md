@@ -67,7 +67,7 @@ Tag every generated page in `Wiki/` with one or more hierarchical domain tags (`
 - **Concept** (`type: concept`) — an idea, technique, term, or principle (RAG, Compound Interest). Extend one whenever an idea recurs or is clearly durable; prefer extending an existing page over creating a near-duplicate.
 - **Entity** (`type: entity`) — a named person, org, product, place, or event (Andrej Karpathy, Obsidian). Entities link to the concepts they exemplify; concepts link to key entities.
 
-A new concept or entity page is the human's pick. Until then, link it as an unresolved `[[link]]` — a **candidate** — and `lint-wiki` offers it, ranked by how many pages mention it.
+A new concept or entity page is the human's pick. Until a matching evergreen page exists, link its intended path as an unresolved **candidate**, even if a raw source or human note has the same name. `lint-wiki` offers it, ranked by how many pages mention it.
 
 ## Page Shape
 
@@ -108,6 +108,7 @@ Answer from the wiki's pages, cited as `[[links]]`. When an answer has lasting v
 - Titles in Title Case, singular ("Multi-Agent System", not "agents").
 - A filename (`<slug>`) is the page title with each of `\ / : * ? " < > | # [ ] ^` replaced by `-`.
 - Link existing pages by their actual filenames (`[[Page Name]]`); use `[[Page Name|Alias]]` to display an acronym or alternate name.
+- When filenames collide, qualify the intended role's path, including candidate links: `[[Wiki/Vannevar Bush|Vannevar Bush]]` targets the evergreen page, even while only `Sources/Vannevar Bush.md` exists.
 - Absolute timestamps — ISO 8601 with the local timezone offset (`YYYY-MM-DDTHH:MM:SS±HH:MM`; `date -Iseconds` prints one), never "today".
 - `log.md` entries: one plain paragraph each, `[YYYY-MM-DDTHH:MM:SS±HH:MM] <op> | <summary>` — keep them grep-able (`grep "^\[" log.md`).
 - `index.md` is the catalog _you_ maintain and read first: one line per generated page in `Wiki/`, including source summaries and digests, `- [[<page path>]] — <summary>`, under the heading of its first domain tag's top-level tag (`ai/agent` sits under `` ## AI `#ai` ``). One heading per top-level tag in use; within each, evergreen pages first, then source summaries, then digests.
