@@ -12,8 +12,8 @@ Resolve the vault per [`references/vault.md`](../../references/vault.md).
 
 Run every check across the wiki — a full sweep, not a spot-check. Add any the constitution defines on top of these.
 
-- **Contradictions** — pages that disagree; a newer source should have superseded an older claim, and hasn't.
-- **Stale claims** — a claim a later source has overturned, still standing unreconciled.
+- **Contradictions** — incompatible claims presented as current in the same context. Preserve attributed source disagreements.
+- **Stale claims** — outdated assertions still presented as current.
 - **Stale pages** — evergreen pages with time-sensitive information due for review. Explain what needs rechecking and why.
 - **Orphans** — evergreen pages with no inbound links.
 - **Duplicates** — two pages for one concept or entity.
