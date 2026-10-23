@@ -38,7 +38,7 @@ Every generated page in `Wiki/`, including `Wiki/Summaries/` and `Wiki/Digests/`
 title: <Title Case>
 type: source | concept | entity | digest
 summary: <one line — shown in the index>
-aliases: [] # acronyms & alternate names so [[RAG]] resolves
+aliases: [] # acronyms & alternate names for discovery
 created: YYYY-MM-DDTHH:MM:SS±HH:MM
 updated: YYYY-MM-DDTHH:MM:SS±HH:MM
 tags: [] # hierarchical domain tags — see Tags below
@@ -107,6 +107,7 @@ Answer from the wiki's pages, cited as `[[links]]`. When an answer has lasting v
 - Propose a split for approval when a concept page covers distinct concepts.
 - Titles in Title Case, singular ("Multi-Agent System", not "agents").
 - A filename (`<slug>`) is the page title with each of `\ / : * ? " < > | # [ ] ^` replaced by `-`.
+- Link existing pages by their actual filenames (`[[Page Name]]`); use `[[Page Name|Alias]]` to display an acronym or alternate name.
 - Absolute timestamps — ISO 8601 with the local timezone offset (`YYYY-MM-DDTHH:MM:SS±HH:MM`; `date -Iseconds` prints one), never "today".
 - `log.md` entries: one plain paragraph each, `[YYYY-MM-DDTHH:MM:SS±HH:MM] <op> | <summary>` — keep them grep-able (`grep "^\[" log.md`).
 - `index.md` is the catalog _you_ maintain and read first: one line per generated page in `Wiki/`, including source summaries and digests, `- [[<page path>]] — <summary>`, under the heading of its first domain tag's top-level tag (`ai/agent` sits under `` ## AI `#ai` ``). One heading per top-level tag in use; within each, evergreen pages first, then source summaries, then digests.

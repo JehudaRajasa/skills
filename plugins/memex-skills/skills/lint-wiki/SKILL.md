@@ -19,7 +19,8 @@ Run every check across the wiki — a full sweep, not a spot-check. Add any the 
 - **Duplicates** — two pages for one concept or entity.
 - **Missing cross-references** — pages that should link to each other and don't.
 - **Unlisted tags** — a tag the constitution's tag list leaves out, on a page the constitution says to tag: an agent's slip, or a tag the user added by hand. Report each with the pages that carry it; the user approves it onto the list or has it replaced.
-- **Missing aliases** — an acronym or alternate name the wiki uses for a page that its aliases don't list, so links by that name break.
+- **Missing aliases** — an acronym or alternate name used for an existing page but absent from its alias metadata.
+- **Broken links** — unresolved destinations whose intended page exists under another filename or alias.
 - **Data gaps** — a question the wiki raises but never answers, fillable with a web search.
 - **Unprocessed raw sources** — raw sources in the **raw inbox** that the constitution defines as unprocessed. The fix is `/memex-skills:ingest` with no argument, which processes them all.
 
@@ -31,7 +32,7 @@ Then the generative half — where the wiki should grow next:
 
 ## Report and fix
 
-Report every finding. Auto-fix only the safe, mechanical ones — a missing cross-reference, a missing alias, or a broken link whose page exists under another title or alias (point it there). Leave the judgment calls — contradictions, stale claims, what to reconcile — for the user to rule on.
+Report every finding. Auto-fix only the safe, mechanical ones — a missing cross-reference, a missing alias, or a broken link with an unambiguous existing target. Repair link destinations as well as alias metadata: target the actual filename and preserve the display text (`[[Page Name|Alias]]`). Leave ambiguous targets and judgment calls — contradictions, stale claims, what to reconcile — for the user to rule on.
 
 Report the candidates as a pick list, ranked by how many pages mention each, with those pages as its evidence. Write the ones the user picks from the pages that mention them, and link their unlinked mentions; the rest stay candidates.
 
