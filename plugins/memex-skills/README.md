@@ -10,7 +10,7 @@ Karpathy's gist describes three architectural layers and leaves the implementati
 
 | Layer | What it holds | Who writes it |
 | --- | --- | --- |
-| Raw sources | Full-text captures saved locally, preserving originals when their URLs stop working | You and the agent |
+| Raw sources | Preserved full-text originals saved locally, available when their URLs stop working | You and the agent |
 | Generated wiki | Knowledge the agent compiles from those sources and maintains as it grows, plus an index and activity log | The agent; you pick new evergreen pages |
 | Schema | Your vault's `AGENTS.md`: folder mappings, frontmatter, tags, page formats, and workflows | You and the agent |
 
@@ -20,9 +20,9 @@ The generated wiki contains three kinds of content:
 - **Evergreen pages** — concept and entity pages that connect what you learn across sources and evolve as your understanding changes.
 - **Digests** — dated reviews of what you learned in a day, week, or month.
 
-Raw captures protect against link rot. Source summaries make individual sources easy to revisit; evergreen pages bring their contributions together while keeping each author's claims attributed.
+Raw sources protect against link rot. Source summaries make individual sources easy to revisit; evergreen pages bring their contributions together while keeping each author's claims attributed.
 
-The skills call your vault's `AGENTS.md` the **constitution**. It maps each content role to a folder, so the paths stay yours. The [template](AGENTS.example.md) uses `Sources/` for raw captures, `Wiki/Summaries/` for source summaries, `Wiki/` for concept and entity pages, and `Wiki/Digests/` for digests.
+The skills call your vault's `AGENTS.md` the **constitution**. It maps each content role to a folder, so the paths stay yours. The [template](AGENTS.example.md) uses `Sources/` as the raw inbox for raw sources, `Wiki/Summaries/` for source summaries, `Wiki/` for concept and entity pages, and `Wiki/Digests/` for digests.
 
 ## Installation
 
@@ -83,7 +83,7 @@ Run the skills from inside your vault. See [vault configuration](references/vaul
 
 ### 1. [`/ingest`](skills/ingest/SKILL.md)
 
-File a source into the wiki. Give it the URL of an article, paper, or video: it saves the full text to the raw inbox, talks the takeaways over with you, and writes the summary. Run it with no argument to process every clip your constitution defines as unprocessed. Either way, it updates every evergreen page the source touches and links the missing ones as [candidates](#why-new-pages-are-your-pick).
+File a source into the wiki. Give it the URL of an article, paper, or video: it saves the full text as a raw source in the raw inbox, talks the takeaways over with you, and writes the source summary. Run it with no argument to process every raw source your constitution defines as unprocessed. Either way, it updates every evergreen page the source touches and links the missing ones as [candidates](#why-new-pages-are-your-pick).
 
 ```
 /memex-skills:ingest https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
@@ -100,7 +100,7 @@ Write a dated review of a day, week, or month of what you learned. It reads the 
 
 ### 3. [`/lint-wiki`](skills/lint-wiki/SKILL.md)
 
-Health-check the whole wiki: contradictions, stale claims and pages, orphans, duplicates, missing links and aliases, and unprocessed clips. It fixes the mechanical problems, reports the rest for you to rule on, and suggests where the wiki should grow next. That includes the candidate pages, ranked by how many pages mention them, for you to pick.
+Health-check the whole wiki: contradictions, stale claims and pages, orphans, duplicates, missing links and aliases, and unprocessed raw sources. It fixes the mechanical problems, reports the rest for you to rule on, and suggests where the wiki should grow next. That includes the candidate pages, ranked by how many pages mention them, for you to pick.
 
 ## Rationales
 
@@ -112,7 +112,7 @@ The skills never name a folder. They name roles — raw inbox, source summaries,
 
 Karpathy's version lets the agent create pages freely, and it will create a page for every concept and entity a source mentions, whether you need one or not. Ingest a few articles on Ralph loops and you get a Claude Code page too, though you already know what Claude Code is. Pages like that bloat the wiki. They bury the pages you do need, and every later ingest and lint has one more page to keep current.
 
-So `/ingest` writes the source's summary and updates the evergreen pages that already exist, but it creates none. A concept or entity without a page stays an unresolved `[[link]]`: a **candidate**. `/lint-wiki` lists the candidates, ranked by how many pages mention them, and writes only the ones you pick. Obsidian already shows unresolved links, so candidates need no extra file, and the ones you skip keep collecting mentions until they earn a page.
+So `/ingest` writes the source summary and updates the evergreen pages that already exist, but it creates none. A concept or entity without a page stays an unresolved `[[link]]`: a **candidate**. `/lint-wiki` lists the candidates, ranked by how many pages mention them, and writes only the ones you pick. Obsidian already shows unresolved links, so candidates need no extra file, and the ones you skip keep collecting mentions until they earn a page.
 
 ## License
 

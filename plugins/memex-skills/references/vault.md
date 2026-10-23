@@ -15,7 +15,7 @@ Take the first that resolves:
 
 The skills speak in **roles**; the constitution binds each role to this vault's concrete paths, frontmatter, and page shape. Match roles by purpose, using only the paths and field names the constitution defines. The roles a skill may name:
 
-- **raw inbox** — immutable full-text captures: the link-rot backstop and the feedstock an ingest sweeps.
+- **raw inbox** — holds immutable **raw sources**, the link-rot backstop and the feedstock ingest sweeps.
 - **source summaries** — one self-contained page per ingested source, preserving its arguments, evidence, and caveats for convenient review.
 - **evergreen pages** — the cross-linked concept and entity pages, the compounding knowledge. New ones are the user's pick: a concept or entity without a page stays an unresolved `[[link]]` — a **candidate** — until the user picks it in `lint-wiki`.
 - **digests** — dated temporal syntheses of a window (day/week/month): frozen snapshots, not the compounding evergreen pages.

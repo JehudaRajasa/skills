@@ -22,7 +22,7 @@ The architectural layers are **raw sources**, the **generated wiki**, and the **
 
 | Layer | Folder | Owner | Role |
 | --- | --- | --- | --- |
-| Raw sources | `Sources/` | Shared | **Raw inbox** — immutable full-text clips: the human's captures (Web Clipper output) and the agent's saves (article → Markdown, PDF, images). The link-rot backstop and the feedstock for ingest. |
+| Raw sources | `Sources/` | Shared | **Raw inbox** — immutable raw sources: preserved originals the human captures (Web Clipper output) or the agent saves (article → Markdown, PDF, images). The link-rot backstop and the feedstock for ingest. |
 | Generated wiki | `Wiki/Summaries/` | Agent | **Source summaries** — one self-contained page per ingested article, paper, or video, preserving its arguments, evidence, and caveats. Update it when the raw source changes. |
 | Generated wiki | `Wiki/` | Agent | **Evergreen pages** — cross-linked concept and entity pages. The compounding knowledge. |
 | Generated wiki | `Wiki/Digests/` | Agent | **Digests** — dated syntheses of a window (day/week/month), one file per window: `<window> <date>.md`. |
@@ -46,11 +46,11 @@ source_url: <sources only>
 source_type: article | paper | video # sources only
 author: <sources only — the writer; for a video, the channel>
 published: YYYY-MM-DD # sources only — include the source's publication date when known
-raw: "[[Sources/<slug>]]" # sources only — the full-text capture
+raw: "[[Sources/<slug>]]" # sources only — the raw source
 ---
 ```
 
-`Sources/` clips stay as captured. After successfully ingesting a clip, set or refresh its `processed: YYYY-MM-DDTHH:MM:SS±HH:MM` stamp. The stamp is the only raw content the agent may edit. A modified clip or one with no stamp is **unprocessed**.
+Raw sources in `Sources/` stay as captured. After successfully ingesting one, set or refresh its `processed: YYYY-MM-DDTHH:MM:SS±HH:MM` stamp. The stamp is the only raw source content the agent may edit. A modified raw source or one with no stamp is **unprocessed**.
 
 ## Tags
 
@@ -62,7 +62,7 @@ Tag every generated page in `Wiki/` with one or more hierarchical domain tags (`
 
 ## Page Types
 
-- **Capture** (`Sources/`) — clips, raw, no bar to entry.
+- **Raw source** (`Sources/`) — preserved original, no bar to entry.
 - **Source summary** (`type: source`) — one page per ingested article, paper, or video, faithful to that source.
 - **Concept** (`type: concept`) — an idea, technique, term, or principle (RAG, Compound Interest). Extend one whenever an idea recurs or is clearly durable; prefer extending an existing page over creating a near-duplicate.
 - **Entity** (`type: entity`) — a named person, org, product, place, or event (Andrej Karpathy, Obsidian). Entities link to the concepts they exemplify; concepts link to key entities.
@@ -92,9 +92,9 @@ Start at `## Summary`; the title lives in the frontmatter. Match the detail to t
 ## Quotes   — 0–2 verbatim lines, each with speaker and locator
 ```
 
-- **Summary** — grounded in the raw capture; the first sentence states the source's main claim.
+- **Summary** — grounded in the raw source; the first sentence states the source's main claim.
 - **Notes** — expand on the Summary when the source warrants it. Each bold line is a claim the source makes. End each support bullet with a locator — `[mm:ss]` for a video, `§Section` for an article, `p. N` for a paper. Bold the top-level lines only. Reach for a table or Mermaid diagram where the structure is visual (a comparison, a flow).
-- **Quotes** — copied from the raw capture, so each one checks against it. Omit the section when nothing is quotable.
+- **Quotes** — copied from the raw source, so each one checks against it. Omit the section when nothing is quotable.
 
 Link concepts and entities inline in the Summary and Notes as `[[links]]`: these claims are what ingest folds into evergreen pages. Name who holds each opinion or forecast.
 
@@ -109,4 +109,4 @@ Answer from the wiki's pages, cited as `[[links]]`. When an answer has lasting v
 - A filename (`<slug>`) is the page title with each of `\ / : * ? " < > | # [ ] ^` replaced by `-`.
 - Absolute timestamps — ISO 8601 with the local timezone offset (`YYYY-MM-DDTHH:MM:SS±HH:MM`; `date -Iseconds` prints one), never "today".
 - `log.md` entries: one plain paragraph each, `[YYYY-MM-DDTHH:MM:SS±HH:MM] <op> | <summary>` — keep them grep-able (`grep "^\[" log.md`).
-- `index.md` is the catalog _you_ maintain and read first: one line per generated page in `Wiki/`, including summaries and digests, `- [[<page path>]] — <summary>`, under the heading of its first domain tag's top-level tag (`ai/agent` sits under `` ## AI `#ai` ``). One heading per top-level tag in use; within each, evergreen pages first, then source summaries, then digests.
+- `index.md` is the catalog _you_ maintain and read first: one line per generated page in `Wiki/`, including source summaries and digests, `- [[<page path>]] — <summary>`, under the heading of its first domain tag's top-level tag (`ai/agent` sits under `` ## AI `#ai` ``). One heading per top-level tag in use; within each, evergreen pages first, then source summaries, then digests.
