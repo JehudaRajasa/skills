@@ -83,7 +83,7 @@ Run the skills from inside your vault. See [vault configuration](references/vaul
 
 ### 1. [`/ingest`](skills/ingest/SKILL.md)
 
-File a source into the wiki. Give it the URL of an article, paper, or video: it saves the full text to the raw inbox, talks the takeaways over with you, and writes the summary. Run it with no argument to file every clip you captured but never processed. Either way, it updates every evergreen page the source touches and links the missing ones as [candidates](#why-new-pages-are-your-pick).
+File a source into the wiki. Give it the URL of an article, paper, or video: it saves the full text to the raw inbox, talks the takeaways over with you, and writes the summary. Run it with no argument to process every clip your constitution defines as unprocessed. Either way, it updates every evergreen page the source touches and links the missing ones as [candidates](#why-new-pages-are-your-pick).
 
 ```
 /memex-skills:ingest https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
@@ -100,7 +100,7 @@ Write a dated review of a day, week, or month of what you learned. It reads the 
 
 ### 3. [`/lint-wiki`](skills/lint-wiki/SKILL.md)
 
-Health-check the whole wiki: contradictions, stale claims and pages, orphans, duplicates, missing links and aliases, and unfiled clips. It fixes the mechanical problems, reports the rest for you to rule on, and suggests where the wiki should grow next. That includes the candidate pages, ranked by how many pages mention them, for you to pick.
+Health-check the whole wiki: contradictions, stale claims and pages, orphans, duplicates, missing links and aliases, and unprocessed clips. It fixes the mechanical problems, reports the rest for you to rule on, and suggests where the wiki should grow next. That includes the candidate pages, ranked by how many pages mention them, for you to pick.
 
 ## Rationales
 

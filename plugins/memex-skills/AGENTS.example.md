@@ -23,7 +23,7 @@ The architectural layers are **raw sources**, the **generated wiki**, and the **
 | Layer | Folder | Owner | Role |
 | --- | --- | --- | --- |
 | Raw sources | `Sources/` | Shared | **Raw inbox** — immutable full-text clips: the human's captures (Web Clipper output) and the agent's saves (article → Markdown, PDF, images). The link-rot backstop and the feedstock for ingest. |
-| Generated wiki | `Wiki/Summaries/` | Agent | **Source summaries** — one self-contained page per ingested article, paper, or video, preserving its arguments, evidence, and caveats. Stable once written. |
+| Generated wiki | `Wiki/Summaries/` | Agent | **Source summaries** — one self-contained page per ingested article, paper, or video, preserving its arguments, evidence, and caveats. Update it when the raw source changes. |
 | Generated wiki | `Wiki/` | Agent | **Evergreen pages** — cross-linked concept and entity pages. The compounding knowledge. |
 | Generated wiki | `Wiki/Digests/` | Agent | **Digests** — dated syntheses of a window (day/week/month), one file per window: `<window> <date>.md`. |
 
@@ -50,7 +50,7 @@ raw: "[[Sources/<slug>]]" # sources only — the full-text capture
 ---
 ```
 
-`Sources/` clips stay as captured. After ingesting a clip, stamp it `processed: YYYY-MM-DDTHH:MM:SS±HH:MM` (when you processed it) — the one edit a clip ever gets. A clip with no stamp, or modified more than a minute after it (writing the stamp itself takes seconds), is **unprocessed**.
+`Sources/` clips stay as captured. After successfully ingesting a clip, set or refresh its `processed: YYYY-MM-DDTHH:MM:SS±HH:MM` stamp. The stamp is the only raw content the agent may edit. A modified clip or one with no stamp is **unprocessed**.
 
 ## Tags
 
