@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 Write a dated digest — a prose synthesis of what the vault took in and how it changed over a window: what you learned, not a changelog.
 
-Resolve the vault per [`references/vault.md`](../../references/vault.md), then read its `AGENTS.md` and run this in the vault's own terms.
+Resolve the vault per [`references/vault.md`](../../references/vault.md).
 
 ## Window
 

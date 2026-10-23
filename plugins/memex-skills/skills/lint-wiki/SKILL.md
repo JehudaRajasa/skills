@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 Health-check the whole wiki: sweep every page for what's broken or missing, report it, fix the safe ones in place, and write the candidate pages the user picks. Run it periodically as the wiki grows.
 
-Resolve the vault per [`references/vault.md`](../../references/vault.md), then read its `AGENTS.md` and run this in the vault's own terms.
+Resolve the vault per [`references/vault.md`](../../references/vault.md).
 
 ## Checks
 

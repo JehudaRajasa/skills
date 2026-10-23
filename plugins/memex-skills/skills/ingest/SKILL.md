@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 Ingest a source into the wiki — preserve the raw source, write its source summary, and fold it into every page it touches.
 
-Resolve the vault per [`references/vault.md`](../../references/vault.md), then read its `AGENTS.md` and run this in the vault's own terms.
+Resolve the vault per [`references/vault.md`](../../references/vault.md).
 
 ## Get the raw source
 

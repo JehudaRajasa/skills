@@ -2,7 +2,7 @@
 
 Skills for an [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f), Andrej Karpathy's pattern for a personal knowledge base that an agent maintains. You collect sources and ask questions; the agent summarizes, cross-links, and keeps the wiki consistent as it grows.
 
-There are three skills: [`/ingest`](#1-ingest) files and summarizes sources; [`/digest`](#2-digest) connects what you learned over a day, week, or month; and [`/lint-wiki`](#3-lint-wiki) finds problems in your wiki, fixes them, and suggests new pages. They work with any vault whose structure and conventions are defined in `AGENTS.md`, so the folder names and page formats stay yours. Like [Agency Skills](../agency-skills), they are human-invocable only: they add nothing to your model's system prompt, and agents cannot invoke them implicitly.
+There are three skills: [`/ingest`](#1-ingest) files and summarizes sources; [`/digest`](#2-digest) connects what you learned over a day, week, or month; and [`/lint-wiki`](#3-lint-wiki) finds problems in your wiki, fixes them, and suggests new pages. They follow your vault's **constitution** (`AGENTS.md` or `CLAUDE.md`), so the folder names and page formats stay yours. Like [Agency Skills](../agency-skills), they are human-invocable only: they add nothing to your model's system prompt, and agents cannot invoke them implicitly.
 
 ## The Pattern
 
@@ -12,7 +12,7 @@ Karpathy's gist describes three architectural layers and leaves the implementati
 | --- | --- | --- |
 | Raw sources | Preserved full-text originals saved locally, available when their URLs stop working | You and the agent |
 | Generated wiki | Knowledge the agent compiles from those sources and maintains as it grows, plus an index and activity log | The agent; you pick new evergreen pages |
-| Schema | Your vault's `AGENTS.md`: folder mappings, frontmatter, tags, page formats, and workflows | You and the agent |
+| Schema | Your vault's constitution: folder mappings, frontmatter, tags, page formats, and workflows | You and the agent |
 
 The generated wiki contains three kinds of content:
 
@@ -22,7 +22,7 @@ The generated wiki contains three kinds of content:
 
 Raw sources protect against link rot. Source summaries make individual sources easy to revisit; evergreen pages bring their contributions together while keeping each author's claims attributed.
 
-The skills call your vault's `AGENTS.md` the **constitution**. It maps each content role to a folder, so the paths stay yours. The [template](AGENTS.example.md) uses `Sources/` as the raw inbox for raw sources, `Wiki/Summaries/` for source summaries, `Wiki/` for concept and entity pages, and `Wiki/Digests/` for digests.
+The **constitution** maps each content role to a folder, so the paths stay yours. The [template](AGENTS.example.md) uses `Sources/` as the raw inbox for raw sources, `Wiki/` for concept and entity pages, `Wiki/Summaries/` for source summaries, and `Wiki/Digests/` for digests.
 
 ## Installation
 
@@ -75,7 +75,7 @@ Video ingest requires [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) and [`jq`](ht
 
 Copy [`AGENTS.example.md`](AGENTS.example.md) to your vault's root as `AGENTS.md`, then follow the comment at its top: rename the folders to yours, seed your tags, add a `CLAUDE.md` that imports it, and create an empty `index.md` and `log.md`. Or let your agent do it: give it the template's link and your vault's path, and ask it to follow the comment. It can map folders you already have onto the roles.
 
-Already have notes in the vault? Folders not listed in your vault's `AGENTS.md` stay yours: the agent reads them when relevant and edits them only when you ask.
+Already have notes in the vault? Folders not listed in the constitution stay yours: the agent reads them when relevant and edits them only when you ask.
 
 ## Skills
 
@@ -106,7 +106,7 @@ Health-check the whole wiki: contradictions, stale claims and pages, orphans, du
 
 ### Why Skills Speak in Roles
 
-The skills never name a folder. They name roles — raw inbox, source summaries, evergreen pages, digests, index, log — and your vault's `AGENTS.md` maps each role to a folder. Rename `Wiki/` to `Notes/`, or change a page format, and the skills follow without an edit.
+The skills never name a folder. They name roles — raw inbox, source summaries, evergreen pages, digests, index, log — and the constitution maps each role to a folder. Rename `Wiki/` to `Notes/`, or change a page format, and the skills follow without an edit.
 
 ### Why New Pages Are Your Pick
 
