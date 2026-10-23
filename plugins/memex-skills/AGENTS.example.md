@@ -46,7 +46,7 @@ source_url: <sources only>
 source_type: article | paper | video # sources only
 author: <sources only — the writer; for a video, the channel>
 published: YYYY-MM-DD # sources only — include the source's publication date when known
-raw: "[[Sources/<slug>]]" # sources only — the raw source
+raw: "[[Sources/<raw filename>]]" # sources only — the raw source
 ---
 ```
 
