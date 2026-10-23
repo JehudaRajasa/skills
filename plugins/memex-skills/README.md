@@ -69,7 +69,7 @@ Replace `cursor` with your agent's name.
 
 </details>
 
-Ingesting a video also needs [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) and [`jq`](https://jqlang.org) on your `PATH`. It works on any site yt-dlp supports, as long as the video has captions.
+Video ingest requires [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) and [`jq`](https://jqlang.org) on your `PATH`, plus captions in the video's spoken language.
 
 ## Setup
 
