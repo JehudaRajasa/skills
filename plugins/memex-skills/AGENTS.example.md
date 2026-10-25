@@ -35,7 +35,7 @@ Every generated page in `Wiki/`, including `Wiki/Summaries/` and `Wiki/Digests/`
 
 ```yaml
 ---
-title: <Title Case>
+title: <page title>
 type: source | concept | entity | digest
 summary: <one line — shown in the index>
 aliases: [] # acronyms & alternate names for discovery
@@ -107,7 +107,7 @@ Answer from the wiki's pages, cited as `[[links]]`. When an answer has lasting v
 ## Conventions
 
 - Propose a split for approval when a concept page covers distinct concepts.
-- Titles in Title Case, singular ("Multi-Agent System", not "agents").
+- Concept titles: Title Case, singular. Preserve source titles and entities' proper names.
 - A filename (`<slug>`) is the page title with each of `\ / : * ? " < > | # [ ] ^` replaced by `-`.
 - Link existing pages by their actual filenames (`[[Page Name]]`); use `[[Page Name|Alias]]` to display an acronym or alternate name.
 - When filenames collide, qualify the intended role's path, including candidate links: `[[Wiki/Vannevar Bush|Vannevar Bush]]` targets the evergreen page, even while only `Sources/Vannevar Bush.md` exists.
