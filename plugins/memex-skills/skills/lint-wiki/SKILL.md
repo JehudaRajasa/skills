@@ -15,7 +15,7 @@ Run every check across the wiki — a full sweep, not a spot-check. Add any the 
 - **Contradictions** — incompatible claims presented as current in the same context. Preserve attributed source disagreements.
 - **Stale claims** — outdated assertions still presented as current.
 - **Stale pages** — evergreen pages with time-sensitive information due for review. Explain what needs rechecking and why.
-- **Orphans** — evergreen pages with no inbound links.
+- **Orphans** — evergreen pages with no inbound links from outside the **index** and **log**.
 - **Duplicates** — two pages for one concept or entity.
 - **Missing cross-references** — pages that should link to each other and don't.
 - **Unlisted tags** — a tag the constitution's tag list leaves out, on a page the constitution says to tag: an agent's slip, or a tag the user added by hand. Report each with the pages that carry it; the user approves it onto the list or has it replaced.
