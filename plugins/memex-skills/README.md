@@ -18,7 +18,7 @@ The generated wiki contains three kinds of content:
 
 - **Source summaries** — one page per ingested article, paper, or video, preserving its author's arguments, evidence, and caveats. The length fits the source: a short announcement may need a paragraph; a paper may warrant detailed notes.
 - **Evergreen pages** — concept and entity pages that connect what you learn across sources and evolve as your understanding changes.
-- **Digests** — dated reviews of what you learned in a day, week, or month.
+- **Digests** — reviews of logged ingests and evergreen changes for a completed calendar period.
 
 Raw sources protect against link rot. Source summaries make individual sources easy to revisit; evergreen pages bring their contributions together while keeping each author's claims attributed.
 
@@ -92,7 +92,7 @@ File a source into the wiki. Give it the URL of an article, paper, or video: it 
 
 ### 2. [`/digest`](skills/digest/SKILL.md)
 
-Write a dated review of a day, week, or month of what you learned. It reads the log to find what was filed and changed in the window, then writes one digest grouped by your tags, with each claim linked to its page.
+Review logged ingests and evergreen changes for the last completed day, week, or month with claims linked to their pages. Reruns return the existing digest unchanged.
 
 ```
 /memex-skills:digest week

@@ -25,7 +25,7 @@ The architectural layers are **raw sources**, the **generated wiki**, and the **
 | Raw sources | `Sources/` | Shared | **Raw inbox** — immutable raw sources: preserved originals the human captures (Web Clipper output) or the agent saves (article → Markdown, PDF, images). The link-rot backstop and the feedstock for ingest. |
 | Generated wiki | `Wiki/Summaries/` | Agent | **Source summaries** — one self-contained page per ingested article, paper, or video, preserving its arguments, evidence, and caveats. Update it when the raw source changes. |
 | Generated wiki | `Wiki/` | Agent | **Evergreen pages** — cross-linked concept and entity pages. The compounding knowledge. |
-| Generated wiki | `Wiki/Digests/` | Agent | **Digests** — dated syntheses of a window (day/week/month), one file per window: `<window> <date>.md`. |
+| Generated wiki | `Wiki/Digests/` | Agent | **Digests** — one synthesis per completed calendar period. |
 
 The **index** (`index.md`, the page catalog) and the **log** (`log.md`, the audit trail) live at the vault root beside this file. Folders not listed above hold the human's own notes: read them when relevant, and edit them only when the human asks.
 
@@ -42,6 +42,8 @@ aliases: [] # acronyms & alternate names for discovery
 created: YYYY-MM-DDTHH:MM:SS±HH:MM
 updated: YYYY-MM-DDTHH:MM:SS±HH:MM
 tags: [] # hierarchical domain tags — see Tags below
+period_start: YYYY-MM-DD # digests only — inclusive local start date
+period_end: YYYY-MM-DD # digests only — inclusive local end date
 source_url: <sources only>
 source_type: article | paper | video # sources only
 author: <sources only — the writer; for a video, the channel>
