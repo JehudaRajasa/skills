@@ -11,7 +11,7 @@ This Obsidian vault is an **LLM Wiki** (Karpathy pattern): the human captures, t
 
 ## Orient First (Every Session)
 
-1. Read `index.md` — the catalog of every page.
+1. Read `index.md`.
 2. Read the last entries of `log.md` — recent activity.
 
 After changing the vault, update `index.md` (if pages changed) and append to `log.md`.
