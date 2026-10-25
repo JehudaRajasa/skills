@@ -31,7 +31,7 @@ The **index** (`index.md`, the page catalog) and the **log** (`log.md`, the audi
 
 ## Frontmatter
 
-Every generated page in `Wiki/`, including `Wiki/Summaries/` and `Wiki/Digests/`:
+Every generated page in `Wiki/`, including `Wiki/Summaries/` and `Wiki/Digests/`, uses these common fields:
 
 ```yaml
 ---
@@ -42,14 +42,40 @@ aliases: [] # acronyms & alternate names for discovery
 created: YYYY-MM-DDTHH:MM:SS±HH:MM
 updated: YYYY-MM-DDTHH:MM:SS±HH:MM
 tags: [] # hierarchical domain tags — see Tags below
-period_start: YYYY-MM-DD # digests only — inclusive local start date
-period_end: YYYY-MM-DD # digests only — inclusive local end date
-source_url: <sources only>
-source_type: article | paper | video # sources only
-author: <sources only — the writer; for a video, the channel>
-published: YYYY-MM-DD # sources only — include the source's publication date when known
-raw: "[[Sources/<raw filename>]]" # sources only — the raw source
 ---
+```
+
+Combine the common fields with the matching page-type block:
+
+**Source summaries**
+
+```yaml
+type: source
+source_url: <URL>
+source_type: article | paper | video
+author: <the writer; for a video, the channel>
+published: YYYY-MM-DD # source's publication date, when known
+raw: "[[Sources/<raw filename>]]"
+```
+
+**Concepts**
+
+```yaml
+type: concept
+```
+
+**Entities**
+
+```yaml
+type: entity
+```
+
+**Digests**
+
+```yaml
+type: digest
+period_start: YYYY-MM-DD # inclusive local start date
+period_end: YYYY-MM-DD # inclusive local end date
 ```
 
 Raw sources in `Sources/` stay as captured. After successfully ingesting one, set or refresh its `processed: YYYY-MM-DDTHH:MM:SS±HH:MM` stamp. The stamp is the only raw source content the agent may edit. A modified raw source or one with no stamp is **unprocessed**.
