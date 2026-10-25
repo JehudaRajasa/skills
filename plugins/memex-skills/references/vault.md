@@ -4,12 +4,7 @@ Every wiki skill runs against a **vault** — an LLM Wiki (Karpathy pattern) who
 
 ## Which vault
 
-Take the first that resolves:
-
-1. **Config** — the `vault` key in `.agents/config.yml` (project root), then `~/.agents/config.yml` (your default vault). The set-once, durable answer.
-2. **Env** — `$MEMEX_VAULT`, a per-shell override.
-3. **Marker** — you're working inside the vault: the nearest ancestor of the working directory whose root `AGENTS.md`/`CLAUDE.md` declares the LLM Wiki pattern. Resolves with zero config when you invoke from inside the vault.
-4. **Ask** — none resolve: ask the user for the path, then offer to write it to `~/.agents/config.yml` so the next run skips this.
+From the working directory upward, use the nearest directory whose `AGENTS.md` or `CLAUDE.md` declares the LLM Wiki pattern. If none matches, ask the user for the vault path.
 
 ## The constitution binds the specifics
 

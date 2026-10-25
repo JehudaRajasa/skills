@@ -79,7 +79,7 @@ Already have notes in the vault? Folders not listed in the constitution stay you
 
 ## Skills
 
-Run the skills from inside your vault. See [vault configuration](references/vault.md) to set a default vault.
+Run the skills from inside your vault.
 
 ### 1. [`/ingest`](skills/ingest/SKILL.md)
 
