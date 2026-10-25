@@ -88,10 +88,8 @@ Tag every generated page in `Wiki/` with one or more hierarchical domain tags (`
 
 - `misc` — pages no listed tag fits yet
 
-## Page Types
+## Evergreen Pages
 
-- **Raw source** (`Sources/`) — preserved original, no bar to entry.
-- **Source summary** (`type: source`) — one page per ingested article, paper, or video, faithful to that source.
 - **Concept** (`type: concept`) — an idea, technique, term, or principle (RAG, Compound Interest). Extend one whenever an idea recurs or is clearly durable; prefer extending an existing page over creating a near-duplicate.
 - **Entity** (`type: entity`) — a named person, org, product, place, or event (Andrej Karpathy, Obsidian). Entities link to the concepts they exemplify; concepts link to key entities.
 
