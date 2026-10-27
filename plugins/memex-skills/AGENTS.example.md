@@ -22,7 +22,7 @@ The architectural layers are **raw sources**, the **generated wiki**, and the **
 
 | Layer | Folder | Owner | Role |
 | --- | --- | --- | --- |
-| Raw sources | `Sources/` | Shared | **Raw inbox** — immutable raw sources: preserved originals the human captures (Web Clipper output) or the agent saves (article → Markdown, PDF, images). The link-rot backstop and the feedstock for ingest. |
+| Raw sources | `Sources/` | Shared | **Raw inbox** — immutable Markdown raw sources: full text the human captures (Web Clipper output) or the agent saves. The link-rot backstop and the feedstock for ingest. |
 | Generated wiki | `Wiki/Summaries/` | Agent | **Source summaries** — one self-contained page per ingested article, paper, or video, preserving its arguments, evidence, and caveats. Update it when the raw source changes. |
 | Generated wiki | `Wiki/` | Agent | **Evergreen pages** — cross-linked concept and entity pages. The compounding knowledge. |
 | Generated wiki | `Wiki/Digests/` | Agent | **Digests** — one synthesis per completed calendar period. |

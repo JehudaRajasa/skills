@@ -15,7 +15,7 @@ Match raw sources and source summaries by source URL or raw-source link. Reuse e
 
 Start from whichever entry point you were invoked with:
 
-- **A source given** — a URL in the argument. Fetch it and save the full text verbatim as a raw source in the **raw inbox** (Markdown, PDF, or image). Interactive by default: read it, talk the takeaways over with the user, then file.
+- **A source given** — a URL in the argument. Fetch the full text and save it verbatim in the **raw inbox**; if unavailable, report that and stop. Interactive by default: read it, talk the takeaways over with the user, then file.
   - **A video URL** — YouTube, Vimeo, TED, or any other site yt-dlp supports: its full text is the transcript. Run [`scripts/fetch_transcript.sh`](scripts/fetch_transcript.sh) `<url>`; its header documents the output. Exit 4: rerun with the known spoken language as argument 2; ask the user if unknown. Any other failure: report the script's error output and stop.
 - **No argument** — sweep the **raw inbox** for every raw source the constitution defines as **unprocessed**, including previously processed ones that have changed. Batch them with less back-and-forth.
 
