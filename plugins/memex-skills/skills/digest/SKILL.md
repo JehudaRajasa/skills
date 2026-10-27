@@ -1,21 +1,21 @@
 ---
 name: digest
-description: Write a dated digest — a prose synthesis of everything captured and changed in a time window, grouped by domain tag and cross-linked.
+description: Write a prose digest of logged ingests and evergreen changes for a completed calendar period.
 argument-hint: "[day|week|month]"
 disable-model-invocation: true
 ---
 
-Write a dated digest — a prose synthesis of what the vault took in and how it changed over a window: what you learned, not a changelog.
-
-Resolve the vault per [`references/vault.md`](references/vault.md), then read its `AGENTS.md` and run this in the vault's own terms.
+Resolve the vault per [`references/vault.md`](references/vault.md).
 
 ## Window
 
-Take the window from the argument — `day`, `week`, or `month`. Empty → ask which. Resolve it to a concrete date range from today.
+Use the last completed calendar `day`, `week` (Monday–Sunday), or `month` in local time; ask if the argument is empty. Select log timestamps from midnight on the first date up to, excluding, midnight after the last.
+
+Return an existing digest for the same period unchanged; match its period metadata, or explicit coverage in older digests.
 
 ## Synthesize
 
-1. Select what falls in the window: read the **log** — the audit trail is the time index — for entries in range, then pull the **summary layer** entries filed and the **evergreen pages** touched over it.
-2. Write one dated synthesis into the **digest layer**, grouped by the vault's domain tags and cross-linked to the pages it covers. Prose that says what the window added up to — the throughline, the connections, what changed your mind — not a list of titles.
+1. Read the **log** for ingests and evergreen changes in range, then pull their **source summaries** and **evergreen pages**. Base the synthesis on those logged changes.
+2. Write one prose synthesis into **digests**, grouped by domain tag. Title it for its throughline and record the window in the constitution's digest-period fields. Choose another title if its filename is occupied.
 
-Done when the window's captures and changes are synthesized into one dated digest, every claim linked to the page behind it.
+Done when an existing digest is returned unchanged, or all selected material is synthesized into one digest with its period recorded and every claim linked to its page.
