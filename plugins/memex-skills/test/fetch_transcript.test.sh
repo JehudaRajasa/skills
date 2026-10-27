@@ -77,6 +77,12 @@ for suffix in '?h=secret' '?h=secret&autoplay=1#t=30s' '#t=30s'; do
   [ "$(cat "$FAKE_URL")" = "https://player.vimeo.com/video/1$suffix" ] || fail "vimeo url: $(cat "$FAKE_URL")"
 done
 
+# WebVTT permits tabs around the timing arrow
+printf 'WEBVTT\n\n00:00:01.000\t-->\t00:00:02.000\nTabbed timing\n' > "$work/tabs.vtt"
+export FAKE_SUB="$work/tabs.vtt"
+out="$("$script" x)"
+[ "$out" = "$(printf 'T\tU\t\thttps://vimeo.com/1\ten\n[00:01] Tabbed timing')" ] || fail "tabbed vtt output: $out"
+
 # empty or blank captions fail without emitting metadata
 printf '%s\n' '{"events": []}' > "$work/empty.json3"
 printf '%s\n' '{"events": [{"segs": [{"utf8": " \t\n"}]}]}' > "$work/blank.json3"

@@ -60,7 +60,7 @@ cues() {
     {events: [gsub("\r"; "") | splits("\n\\s*\n") | split("\n") as $l
       | [range($l | length) | select($l[.] | test("-->"))] as $at
       | range($at | length) as $n
-      | {tStartMs: ($l[$at[$n]] | split(" ")[0] | secs * 1000),
+      | {tStartMs: ($l[$at[$n]] | split("[ \t]+"; "")[0] | secs * 1000),
          segs: [{utf8: ($l[$at[$n] + 1:($at[$n + 1] // ($l | length))] | join(" ") | text)}]}]
       | unique_by([.tStartMs, .segs])}'
 }
