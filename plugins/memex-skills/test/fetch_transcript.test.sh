@@ -71,6 +71,12 @@ out="$("$script" https://vimeo.com/1)"
 [ "$(cat "$FAKE_URL")" = https://player.vimeo.com/video/1 ] || fail "vimeo url: $(cat "$FAKE_URL")"
 [ "$out" = "$(printf 'T\tU\t\thttps://vimeo.com/1\ten\n[00:01] Tom & Jerry two lines\n[00:35] later')" ] || fail "vtt output: $out"
 
+# the embed rewrite preserves access parameters and fragments
+for suffix in '?h=secret' '?h=secret&autoplay=1#t=30s' '#t=30s'; do
+  "$script" "https://vimeo.com/1$suffix" > /dev/null
+  [ "$(cat "$FAKE_URL")" = "https://player.vimeo.com/video/1$suffix" ] || fail "vimeo url: $(cat "$FAKE_URL")"
+done
+
 # empty or blank captions fail without emitting metadata
 printf '%s\n' '{"events": []}' > "$work/empty.json3"
 printf '%s\n' '{"events": [{"segs": [{"utf8": " \t\n"}]}]}' > "$work/blank.json3"

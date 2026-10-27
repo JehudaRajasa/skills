@@ -10,7 +10,7 @@ set -euo pipefail
 shopt -s nullglob
 
 # yt-dlp needs a login for vimeo.com pages, but not for the embed player
-url="$(sed -E 's#^https?://(www\.)?vimeo\.com/([0-9]+)/?([?#].*)?$#https://player.vimeo.com/video/\2#' <<< "$1")"
+url="$(sed -E 's#^https?://(www\.)?vimeo\.com/([0-9]+)/?([?#].*)?$#https://player.vimeo.com/video/\2\3#' <<< "$1")"
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 info="$tmp/info.json"
