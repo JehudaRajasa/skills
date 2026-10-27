@@ -51,21 +51,21 @@ Replace `opencode` with your agent's name.
 
 ## Setup
 
-Run [`/setup-agency-skills`](https://github.com/JehudaRajasa/skills/blob/main/plugins/agency-skills/skills/setup-agency-skills/SKILL.md) (or `$setup-agency-skills` for Codex) once per project to detect your issue tracker and map your board's workflow states into `.agents/config.yml` (see [`config.example.yml`](https://github.com/JehudaRajasa/skills/blob/main/plugins/agency-skills/config.example.yml)).
+Run [`/setup-agency-skills`](skills/setup-agency-skills/SKILL.md) (or `$setup-agency-skills` for Codex) once per project to detect your issue tracker and map your board's workflow states into `.agents/config.yml` (see [`config.example.yml`](https://github.com/JehudaRajasa/skills/blob/main/plugins/agency-skills/config.example.yml)).
 
 ## Workflow
 
 ![Agency skills workflow](https://raw.githubusercontent.com/JehudaRajasa/skills/main/assets/agency-skills-workflow.excalidraw.svg)
 
-### 1. [`/fetch-issues`](https://github.com/JehudaRajasa/skills/blob/main/plugins/agency-skills/skills/fetch-issues/SKILL.md)
+### 1. [`/fetch-issues`](skills/fetch-issues/SKILL.md)
 
 List your open issues in the project's issue tracker so you can pick one.
 
-### 2. [`/cut-branch`](https://github.com/JehudaRajasa/skills/blob/main/plugins/agency-skills/skills/cut-branch/SKILL.md)
+### 2. [`/cut-branch`](skills/cut-branch/SKILL.md)
 
 Cut a branch named after the issue in `<type>/<issue-id>-<slug>` format.
 
-### 3. [`/plan-implementation`](https://github.com/JehudaRajasa/skills/blob/main/plugins/agency-skills/skills/plan-implementation/SKILL.md)
+### 3. [`/plan-implementation`](skills/plan-implementation/SKILL.md)
 
 This is the load-bearing skill within the workflow, where you will likely spend most of your time. The generated plan is the agreed contract between you and your agent.
 
@@ -73,7 +73,7 @@ Issues often come off the board thin—a title, a sentence, whatever grooming le
 
 When the issue's intended behavior, affected scope, and verification are already clear, go straight to [`/implement-change`](#4-implement-change). It follows a saved plan when one exists; otherwise it works directly from the issue. Planning is driven by unresolved decisions, not the number of files involved.
 
-### 4. [`/implement-change`](https://github.com/JehudaRajasa/skills/blob/main/plugins/agency-skills/skills/implement-change/SKILL.md)
+### 4. [`/implement-change`](skills/implement-change/SKILL.md)
 
 Implement from a saved plan or clear issue requirements. In repositories that already have tests, implementation runs through TDD. This skill tells your agent to verify and stop before review and commit. See [why implementation stops before commit](#why-implementation-stops-before-commit).
 
@@ -83,25 +83,25 @@ In this step, you can review the agent's work by hand, with Matt Pocock's `/code
 
 Skip directly to [`/commit`](#6-commit) for trivial changes that do not warrant a full code review, such as comment edits or typo fixes.
 
-### 6. [`/commit`](https://github.com/JehudaRajasa/skills/blob/main/plugins/agency-skills/skills/commit/SKILL.md)
+### 6. [`/commit`](skills/commit/SKILL.md)
 
 Create small [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), one concern each.
 
-### 7. [`/open-change-request`](https://github.com/JehudaRajasa/skills/blob/main/plugins/agency-skills/skills/open-change-request/SKILL.md)
+### 7. [`/open-change-request`](skills/open-change-request/SKILL.md)
 
 Open a pull or merge request, assign it to yourself, and move the issue to the review state.
 
-## Supporting Skills
+## Complimentary Skills
 
-### i. [`/update-plan`](https://github.com/JehudaRajasa/skills/blob/main/plugins/agency-skills/skills/update-plan/SKILL.md)
+### i. [`/update-plan`](skills/update-plan/SKILL.md)
 
 Re-synthesize the plan when context grows. Spikes and research tasks may surface new information that changes the plan's assumptions, scope, or approach.
 
-### ii. [`/where-were-we`](https://github.com/JehudaRajasa/skills/blob/main/plugins/agency-skills/skills/where-were-we/SKILL.md)
+### ii. [`/where-were-we`](skills/where-were-we/SKILL.md)
 
 Reorient yourself on the issue's current state after a long break and identify the next step.
 
-### iii. [`/help-me-understand`](https://github.com/JehudaRajasa/skills/blob/main/plugins/agency-skills/skills/help-me-understand/SKILL.md)
+### iii. [`/help-me-understand`](skills/help-me-understand/SKILL.md)
 
 Explain how a tech stack, feature, or workflow in the codebase works. If `/grilling` extracts decisions, `/help-me-understand` builds your comprehension through guided rounds and checkpoint questions.
 
@@ -110,6 +110,10 @@ Explain how a tech stack, feature, or workflow in the codebase works. If `/grill
 ```
 /help-me-understand the universe pipeline (for a PM)
 ```
+
+### iv. [`/brag`](skills/brag/SKILL.md)
+
+You **don't** remember everything you accomplished at work. This skill lets your agent create a [brag document](https://jvns.ca/blog/brag-documents/) using Julia Evans' format by reviewing your issues, plans, commits, and change requests. Capture what you built and the impact they had, and you walk into your next performance review with the evidence ready.
 
 ## Rationales
 

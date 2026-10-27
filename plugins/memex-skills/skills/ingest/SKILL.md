@@ -1,28 +1,30 @@
 ---
 name: ingest
-description: Ingest a source into the wiki — fetch a URL or video, or sweep the raw inbox, then file a durable summary, a raw backstop, and fold it into every page it touches.
+description: Ingest a source into the wiki — fetch a URL or video, or sweep the raw inbox, then preserve the raw source, write its source summary, and fold it into every page it touches.
 argument-hint: "[source]"
 disable-model-invocation: true
 ---
 
-Ingest a source into the wiki — a durable summary, a raw backstop, folded into every page it touches.
+Ingest a source into the wiki — preserve the raw source, write its source summary, and fold it into every page it touches.
 
-Resolve the vault per [`references/vault.md`](../../references/vault.md), then read its `AGENTS.md` and run this in the vault's own terms.
+Resolve the vault per [`references/vault.md`](../../references/vault.md).
 
-## Get the raw
+Match raw sources and source summaries by source URL or raw-source link. Reuse existing paths for the same source; otherwise choose an unused filename.
+
+## Get the raw source
 
 Start from whichever entry point you were invoked with:
 
-- **A source given** — a URL in the argument, or the source under discussion. Fetch it and save the full text verbatim to the **raw inbox** (Markdown, PDF, or image). Interactive by default: read it, talk the takeaways over with the user, then file.
-  - **A video URL** — YouTube, Vimeo, TED, or any other site yt-dlp supports: its full text is the transcript. Run [`scripts/fetch_transcript.sh`](scripts/fetch_transcript.sh) `<url>`; its header documents the output. Exit 4: rerun with the title's language as the second argument, or ask the user when the title doesn't show it. Any other failure: report the script's error output and stop — a video summary comes from its transcript alone.
-- **No argument** — sweep the **raw inbox** for clips the user captured but never filed (Web Clipper output, no processed stamp). Batch them with less back-and-forth.
+- **A source given** — a URL in the argument. Fetch the full text and save it verbatim in the **raw inbox**; if unavailable, report that and stop. Interactive by default: read it, talk the takeaways over with the user, then file.
+  - **A video URL** — YouTube, Vimeo, TED, or any other site yt-dlp supports: its full text is the transcript. Run [`scripts/fetch_transcript.sh`](scripts/fetch_transcript.sh) `<url>`; its header documents the output. Exit 4: rerun with the known spoken language as argument 2; ask the user if unknown. Any other failure: report the script's error output and stop.
+- **No argument** — sweep the **raw inbox** for every raw source the constitution defines as **unprocessed**, including previously processed ones that have changed. Batch them with less back-and-forth.
 
 ## File it
 
-For each raw item:
+For each raw source:
 
-1. Write a self-contained summary into the **summary layer** — enough that it survives link rot.
-2. Fold the source into every **evergreen page** it touches — the concepts it informs and the entities it names, often many. Update every one that exists; link the rest as **candidates**.
-3. Stamp the raw item processed so the next sweep skips it. Never edit the raw beyond the stamp.
+1. Write or update one page in **source summaries** that preserves the source's arguments, evidence, and caveats.
+2. Fold the source into every **evergreen page** it touches — the concepts it informs and the entities it names, often many. Update every matching evergreen page; link the rest as **candidates**, using their intended evergreen paths when names collide.
+3. After steps 1–2 succeed, set or refresh the raw source's processed stamp so the next sweep skips it. Never edit the raw source beyond the stamp.
 
-Done when every raw item is filed and every page it touches reflects it — updated if it exists, linked as a candidate if not.
+Done when every raw source has a source summary and every concept or entity it touches has either an updated evergreen page or a candidate link to its intended evergreen path.

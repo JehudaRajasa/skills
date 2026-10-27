@@ -71,4 +71,29 @@ out="$("$script" https://vimeo.com/1)"
 [ "$(cat "$FAKE_URL")" = https://player.vimeo.com/video/1 ] || fail "vimeo url: $(cat "$FAKE_URL")"
 [ "$out" = "$(printf 'T\tU\t\thttps://vimeo.com/1\ten\n[00:01] Tom & Jerry two lines\n[00:35] later')" ] || fail "vtt output: $out"
 
+# the embed rewrite preserves access parameters and fragments
+for suffix in '?h=secret' '?h=secret&autoplay=1#t=30s' '#t=30s'; do
+  "$script" "https://vimeo.com/1$suffix" > /dev/null
+  [ "$(cat "$FAKE_URL")" = "https://player.vimeo.com/video/1$suffix" ] || fail "vimeo url: $(cat "$FAKE_URL")"
+done
+
+# WebVTT permits tabs around the timing arrow
+printf 'WEBVTT\n\n00:00:01.000\t-->\t00:00:02.000\nTabbed timing\n' > "$work/tabs.vtt"
+export FAKE_SUB="$work/tabs.vtt"
+out="$("$script" x)"
+[ "$out" = "$(printf 'T\tU\t\thttps://vimeo.com/1\ten\n[00:01] Tabbed timing')" ] || fail "tabbed vtt output: $out"
+
+# empty or blank captions fail without emitting metadata
+printf '%s\n' '{"events": []}' > "$work/empty.json3"
+printf '%s\n' '{"events": [{"segs": [{"utf8": " \t\n"}]}]}' > "$work/blank.json3"
+printf 'WEBVTT\n' > "$work/empty.vtt"
+printf 'WEBVTT\n\n00:00.000 --> 00:01.000\n<i> </i>\n' > "$work/blank.vtt"
+for sub in empty.json3 blank.json3 empty.vtt blank.vtt; do
+  export FAKE_SUB="$work/$sub"
+  code=0; "$script" x > "$work/out" 2> "$work/err" || code=$?
+  [ "$code" = 3 ] || fail "$sub: exit $code"
+  [ ! -s "$work/out" ] || fail "$sub: emitted output"
+  grep -q 'no transcript text' "$work/err" || fail "$sub: missing error"
+done
+
 echo ok

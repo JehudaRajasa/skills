@@ -4,13 +4,13 @@
 # stdout line 1: title<TAB>channel<TAB>upload_date<TAB>webpage_url<TAB>language (real tabs)
 # stdout rest:   transcript in the language the video is spoken in, one line per 30 seconds,
 #                each led by its start time: [mm:ss] text ([h:mm:ss] past the first hour)
-# exit 3: no captions in the video's own language
+# exit 3: no usable captions in the video's own language
 # exit 4: the video doesn't say what language it is in; rerun with [language]
 set -euo pipefail
 shopt -s nullglob
 
 # yt-dlp needs a login for vimeo.com pages, but not for the embed player
-url="$(sed -E 's#^https?://(www\.)?vimeo\.com/([0-9]+)/?([?#].*)?$#https://player.vimeo.com/video/\2#' <<< "$1")"
+url="$(sed -E 's#^https?://(www\.)?vimeo\.com/([0-9]+)/?([?#].*)?$#https://player.vimeo.com/video/\2\3#' <<< "$1")"
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 info="$tmp/info.json"
@@ -60,14 +60,13 @@ cues() {
     {events: [gsub("\r"; "") | splits("\n\\s*\n") | split("\n") as $l
       | [range($l | length) | select($l[.] | test("-->"))] as $at
       | range($at | length) as $n
-      | {tStartMs: ($l[$at[$n]] | split(" ")[0] | secs * 1000),
+      | {tStartMs: ($l[$at[$n]] | split("[ \t]+"; "")[0] | secs * 1000),
          segs: [{utf8: ($l[$at[$n] + 1:($at[$n + 1] // ($l | length))] | join(" ") | text)}]}]
       | unique_by([.tStartMs, .segs])}'
 }
 
-jq -r --arg l "$lang" '[.title, .channel // .uploader, .upload_date, .webpage_url, $l] | @tsv' "$info"
 # drop blank events so each line starts at its first words; join events with a space so words at event edges stay apart
-if [[ $sub == *.json3 ]]; then cat "$sub"; else cues < "$sub"; fi | jq -r '
+transcript="$(if [[ $sub == *.json3 ]]; then cat "$sub"; else cues < "$sub"; fi | jq -r '
   def two: tostring | if length < 2 then "0" + . else . end;
   [.events[]? | select(.segs) | {t: ((.tStartMs // 0) / 1000 | floor), s: ([.segs[].utf8] | join(""))} | select(.s | test("\\S"))]
   | group_by(.t / 30 | floor)[]
@@ -75,4 +74,10 @@ if [[ $sub == *.json3 ]]; then cat "$sub"; else cues < "$sub"; fi | jq -r '
   | ([.[].s] | join(" ") | gsub("\\s+"; " ") | ltrimstr(" ") | rtrimstr(" ")) as $text
   | "[" + (if $t >= 3600 then "\($t / 3600 | floor):" else "" end)
     + "\($t / 60 | floor % 60 | two):\($t % 60 | two)] " + $text
-'
+')"
+if [ -z "$transcript" ]; then
+  echo "no transcript text in caption track $track" >&2
+  exit 3
+fi
+jq -r --arg l "$lang" '[.title, .channel // .uploader, .upload_date, .webpage_url, $l] | @tsv' "$info"
+printf '%s\n' "$transcript"

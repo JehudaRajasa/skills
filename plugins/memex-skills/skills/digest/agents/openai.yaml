@@ -1,6 +1,6 @@
 interface:
   display_name: "Digest"
-  short_description: "Write a dated synthesis of what the vault captured and changed"
+  short_description: "Synthesize logged ingests and evergreen changes"
 
 policy:
   allow_implicit_invocation: false

@@ -91,7 +91,7 @@ Create small [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.
 
 Open a pull or merge request, assign it to yourself, and move the issue to the review state.
 
-## Supporting Skills
+## Complimentary Skills
 
 ### i. [`/update-plan`](plugins/agency-skills/skills/update-plan/SKILL.md)
 
@@ -110,6 +110,10 @@ Explain how a tech stack, feature, or workflow in the codebase works. If `/grill
 ```
 /help-me-understand the universe pipeline (for a PM)
 ```
+
+### iv. [`/brag`](plugins/agency-skills/skills/brag/SKILL.md)
+
+You **don't** remember everything you accomplished at work. This skill lets your agent create a [brag document](https://jvns.ca/blog/brag-documents/) using Julia Evans' format by reviewing your issues, plans, commits, and change requests. Capture what you built and the impact they had, and you walk into your next performance review with the evidence ready.
 
 ## Rationales
 
@@ -130,6 +134,16 @@ You can also put supporting files, such as PRD docs and CSVs inside the issue wo
 ### Why Implementation Stops Before Commit
 
 Matt Pocock's `/implement` skill bundles implementation, code review, and commit. I keep these steps separate because even frontier models still need adjustments or steering after implementation and review, especially for changes with a large blast radius. I need to review the full diff before committing so I can keep my commit history clean.
+
+## Other Skills — Memex
+
+Skills for a personal knowledge base your agent maintains, based on Andrej Karpathy's [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) pattern. You collect sources and ask questions; the agent summarizes sources, cross-links pages, and keeps the wiki consistent as it grows.
+
+- [`/ingest`](plugins/memex-skills/skills/ingest/SKILL.md) files and summarizes sources.
+- [`/digest`](plugins/memex-skills/skills/digest/SKILL.md) connects what you learned over a day, week, or month.
+- [`/lint-wiki`](plugins/memex-skills/skills/lint-wiki/SKILL.md) finds and fixes problems in your wiki and suggests new pages.
+
+See the [Memex Skills README](plugins/memex-skills/README.md) for installation, vault setup, and usage.
 
 ## License
 
