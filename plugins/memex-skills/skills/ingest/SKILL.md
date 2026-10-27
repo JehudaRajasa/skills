@@ -9,6 +9,8 @@ Ingest a source into the wiki — preserve the raw source, write its source summ
 
 Resolve the vault per [`references/vault.md`](../../references/vault.md).
 
+Match raw sources and source summaries by source URL or raw-source link. Reuse existing paths for the same source; otherwise choose an unused filename.
+
 ## Get the raw source
 
 Start from whichever entry point you were invoked with:
@@ -21,7 +23,7 @@ Start from whichever entry point you were invoked with:
 
 For each raw source:
 
-1. Write one page in **source summaries** that preserves the source's arguments, evidence, and caveats. When reprocessing the same source, update its existing source summary.
+1. Write or update one page in **source summaries** that preserves the source's arguments, evidence, and caveats.
 2. Fold the source into every **evergreen page** it touches — the concepts it informs and the entities it names, often many. Update every matching evergreen page; link the rest as **candidates**, using their intended evergreen paths when names collide.
 3. After steps 1–2 succeed, set or refresh the raw source's processed stamp so the next sweep skips it. Never edit the raw source beyond the stamp.
 

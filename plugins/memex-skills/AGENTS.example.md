@@ -132,7 +132,6 @@ Answer from the wiki's pages, cited as `[[links]]`. When an answer has lasting v
 
 - Propose a split for approval when a concept page covers distinct concepts.
 - Concept titles: Title Case, singular. Preserve source titles and entities' proper names.
-- A filename (`<slug>`) is the page title with each of `\ / : * ? " < > | # [ ] ^` replaced by `-`.
 - Link existing pages by their actual filenames (`[[Page Name]]`); use `[[Page Name|Alias]]` to display an acronym or alternate name.
 - When filenames collide, qualify the intended role's path, including candidate links: `[[Wiki/Vannevar Bush|Vannevar Bush]]` targets the evergreen page, even while only `Sources/Vannevar Bush.md` exists.
 - Absolute timestamps — ISO 8601 with the local timezone offset (`YYYY-MM-DDTHH:MM:SS±HH:MM`; `date -Iseconds` prints one), never "today".
