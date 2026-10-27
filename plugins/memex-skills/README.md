@@ -104,10 +104,6 @@ Health-check the whole wiki: contradictions, stale claims and pages, orphans, du
 
 ## Rationales
 
-### Why Skills Speak in Roles
-
-The skills never name a folder. They name roles — raw inbox, source summaries, evergreen pages, digests, index, log — and the constitution maps each role to a folder. Rename `Wiki/` to `Notes/`, or change a page format, and the skills follow without an edit.
-
 ### Why New Pages Are Your Pick
 
 Karpathy's version lets the agent create pages freely, and it will create a page for every concept and entity a source mentions, whether you need one or not. Ingest a few articles on Ralph loops and you get a Claude Code page too, though you already know what Claude Code is. Pages like that bloat the wiki. They bury the pages you do need, and every later ingest and lint has one more page to keep current.
