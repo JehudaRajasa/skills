@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -7,6 +8,10 @@ import { fileURLToPath } from "node:url";
 const plugin = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const root = path.join(plugin, "skills");
 const skills = readdirSync(root);
+
+test("offline transcript checks pass", () => {
+  execFileSync("bash", [path.join(plugin, "test/fetch_transcript.test.sh")], { stdio: "inherit" });
+});
 
 test("source skill links resolve within the native plugin", () => {
   for (const skill of skills) {
